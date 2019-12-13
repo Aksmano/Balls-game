@@ -1,0 +1,14 @@
+{
+  "name": "kulki",
+  "version": "1.0.0",
+  "description": "ending project for client apps",
+  "main": "index.js",
+  "scripts": {
+    
+  },
+  "keywords": [
+    "kulki"
+  ],
+  "author": "@Aksmano",
+  "license": "ISC"
+}
