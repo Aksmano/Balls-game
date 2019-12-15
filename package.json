@@ -3,14 +3,24 @@
   "version": "1.0.0",
   "description": "end project for client apps",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "echo 'Testowy skrypt yo'",
+    "start": "webpack --mode development --watch",
+    "build": "webpack --mode production"
+  },
   "keywords": [
     "kulki"
   ],
   "author": "@Aksmano",
   "license": "ISC",
   "devDependencies": {
+    "css-loader": "^3.3.2",
+    "style-loader": "^1.0.1",
+    "ts-loader": "^6.2.1",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "typescript": "^3.7.3"
   }
 }
