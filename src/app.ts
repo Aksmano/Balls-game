@@ -5,12 +5,11 @@
 */
 
 import Board from "./components/board";
+import Game from "./bin/game"
 import './css/board.css';
 
-const main = document.createElement("div");
-main.id = "main";
+// const main = document.createElement("div");
+// main.id = "main";
 
-const board = new Board();
-main.appendChild(board.render());
+const game = new Game()
 
-document.body.appendChild(main);

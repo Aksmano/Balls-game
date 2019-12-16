@@ -1,3 +1,5 @@
+import Settings from "./static-settings";
+
 export interface Point {
   x: number;
   y: number;
@@ -19,14 +21,24 @@ export interface Path {
   pathIds: Array<string>;
 }
 
-export enum Colors {
+export const ColorsArr: Array<string> = [
   "red",
-  "cyan",
-  "green",
-  "yellow",
-  "violet",
   "orange",
-  "pink"
+  "indigo",
+  "sienna",
+  "magenta",
+  "green",
+  "dodgerblue"
+];
+
+export enum Colors {
+  "firebrick" = "F",
+  "darkturquise" = "D",
+  "lightseagreen" = "L",
+  "yellow" = "Y",
+  "magenta" = "M",
+  "green" = "G",
+  "teal" = "T"
 }
 
 export var signArr: Array<Array<any>> = [];
@@ -46,56 +58,81 @@ export const findTileY = (x: number, coefficient: Coefficient): number => {
   return y;
 };
 
+export const calcTileIndex = (tileId: string): string => {
+  let indexEnd = (parseInt(tileId[2]) * 9 + parseInt(tileId[0])).toString();
+  let end: string;
+  parseInt(indexEnd) < 10 ? (end = "0" + indexEnd) : (end = indexEnd);
+  return end;
+};
+
 export const calcPath = (pointA: Point, pointB: Point): Path => {
   signArr = [];
   pathArr = [];
   controlM = false;
 
-  for (let i = 0; i < 9; i++) signArr.push([0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  for (let i = 0; i < 9; i++) {
+    signArr.push([]);
+    for (let j = 0; j < 9; j++)
+      Settings.ballArr[i][j] == 0
+        ? (signArr[i][j] = 0)
+        : (signArr[i][j] = Settings.ballArr[i][j]);
+  }
 
   for (let i = 0; i < 9; i++) {
     pathArr.push([]);
     for (let j = 0; j < 9; j++) pathArr[i].push([]);
   }
 
-  signArr[pointA.y][pointA.x] = "S";
-  // pathArr[pointA.y][pointA.x].push(`${pointA.y}_${pointA.x}`);
-  signArr[pointB.y][pointB.x] = "M";
+  signArr[pointA.y][pointA.x] = "A";
+  signArr[pointB.y][pointB.x] = "Z";
 
-  if (pointA.y < pointB.y) {
-    for (let i = 0; i < 9; i++) {
+  return calcArrayNums(pointA, pointB, signArr, pathArr);
+};
+
+const calcArrayNums = (
+  pointA: Point,
+  pointB: Point,
+  arr: Array<Array<any>>,
+  arrIds: Array<Array<Array<string>>>
+): Path => {
+  // console.log(counter);
+
+  if (pointA.y < pointB.y)
+    for (let i = 0; i < 9; i++)
       if (pointA.x < pointB.x)
-        for (let j = 0; j < 9; j++)
-          createPathNums({ i: i, j: j }, signArr, pathArr);
+        for (let j = 0; j < 9; j++) createPathNums({ i: i, j: j }, arr, arrIds);
       else
         for (let j = 8; j >= 0; j--)
-          createPathNums({ i: i, j: j }, signArr, pathArr);
-      if (controlM) break;
-    }
-  } else {
-    for (let i = 8; i >= 0; i--) {
+          createPathNums({ i: i, j: j }, arr, arrIds);
+  else
+    for (let i = 8; i >= 0; i--)
       if (pointA.x < pointB.x)
-        for (let j = 0; j < 9; j++)
-          createPathNums({ i: i, j: j }, signArr, pathArr);
+        for (let j = 0; j < 9; j++) createPathNums({ i: i, j: j }, arr, arrIds);
       else
         for (let j = 8; j >= 0; j--)
-          createPathNums({ i: i, j: j }, signArr, pathArr);
-      if (controlM) break;
+          createPathNums({ i: i, j: j }, arr, arrIds);
+
+  if (arrIds[pointB.y][pointB.x].length == 0)
+    calcArrayNums(pointA, pointB, arr, arrIds);
+
+  for (let i = 1; i < pathArr[pointB.y][pointB.x].length; i++)
+    if (pathArr[pointB.y][pointB.x][0] == pathArr[pointB.y][pointB.x][i]) {
+      pathArr[pointB.y][pointB.x] = pathArr[pointB.y][pointB.x].slice(0, i + 1);
+      break;
     }
-  }
+
   const newPathArrays: Path = {
-    pathNum: signArr,
-    pathIds: pathArr[pointB.y][pointB.x]
+    pathNum: arr,
+    pathIds: arrIds[pointB.y][pointB.x]
   };
   return newPathArrays;
 };
-
 const createPathNums = (
   index: ArrayIndex,
   arr: Array<Array<any>>,
   arrIds: Array<Array<Array<string>>>
 ): void => {
-  if (arr[index.i][index.j] == "S")
+  if (arr[index.i][index.j] == "A")
     assignValues(1, { i: index.i, j: index.j }, arr, arrIds);
   // if (controlM) break;
   else if (arr[index.i][index.j] > 0)
@@ -130,16 +167,16 @@ const assignNewValue = (
   try {
     if (
       arr[index.i - shift.i][index.j - shift.j] == 0 ||
-      arr[index.i - shift.i][index.j - shift.j] == "M"
+      arr[index.i - shift.i][index.j - shift.j] == "Z"
     ) {
-      if (arr[index.i - shift.i][index.j - shift.j] != "M")
+      if (arr[index.i - shift.i][index.j - shift.j] != "Z")
         arr[index.i - shift.i][index.j - shift.j] = val;
-      if (arr[index.i][index.j] == "S")
+      if (arr[index.i][index.j] == "A")
         arrIds[index.i - shift.i][index.j - shift.j].push(
           `${index.j}_${index.i}`
         );
       else {
-        console.log(arrIds[index.i][index.j]);
+        // console.log(arrIds[index.i][index.j]);
         arrIds[index.i - shift.i][index.j - shift.j] = arrIds[
           index.i - shift.i
         ][index.j - shift.j].concat(arrIds[index.i][index.j]);
@@ -148,9 +185,9 @@ const assignNewValue = (
         );
       }
     }
-    if (arr[index.i - shift.i][index.j - shift.j] == "M") controlM = true;
+    // if (arr[index.i - shift.i][index.j - shift.j] == "Z") controlM = true;
   } catch (err) {
-    console.log(err);
-    console.log(arr);
+    // console.log(err);
+    // console.log(arr);
   }
 };

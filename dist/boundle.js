@@ -97,7 +97,7 @@
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = module.exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "/* body {\n  margin: 0 auto;\n  padding: 0;\n} */\n\n#main {\n  /* width: 100vw;\n  height: 100vh; */\n  /* margin: 0 auto; */\n  /* padding: 0; */\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n#container {\n  display: flex;\n  width: 500px;\n  height: 500px;\n  flex: 9;\n  flex-direction: column;\n  border: 1px solid black;\n}\n\n.row {\n  display: flex;\n  flex: 1;\n}\n\n.tile {\n  display: flex;\n  flex: 1;\n  box-sizing: border-box;\n  border: 1px solid black;\n}\n\n.ball {\n  border-radius: 50%;\n  display: flex;\n  flex: 0.8;\n  border: 1px solid black;\n}\n", ""]);
+exports.push([module.i, "/* body {\n  margin: 0 auto;\n  padding: 0;\n} */\n\n#main {\n  /* width: 100vw;\n  height: 100vh; */\n  /* margin: 0 auto; */\n  /* padding: 0; */\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n#container {\n  display: flex;\n  width: 500px;\n  height: 500px;\n  flex: 9;\n  flex-direction: column;\n  /* border: 1px solid black; */\n}\n\n.row {\n  display: flex;\n  flex: 1;\n}\n\n.tile {\n  display: flex;\n  flex: 1;\n  box-sizing: border-box;\n  border: 1px solid white;\n  background-color: rgb(60, 60, 60);\n}\n\n.ball {\n  border-radius: 50%;\n  display: flex;\n  flex: 1;\n  border: 5px solid white;\n  margin: 12%;\n  animation: border-unhover 0.5s ease-in-out;\n}\n\n.ball:hover {\n  animation: border-hover 0.5s ease-in-out;\n  border: none;\n  cursor: pointer;\n}\n\n@keyframes slide-up {\n  0% {\n    opacity: 0;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n\n@keyframes border-hover {\n  0% {\n    border: 5px solid white;\n  }\n  100% {\n    border: none;\n  }\n}\n\n@keyframes border-unhover {\n  0% {\n    border: none;\n  }\n  100% {\n    border: 5px solid white;\n  }\n}\n", ""]);
 
 
 /***/ }),
@@ -491,7 +491,7 @@ module.exports = function (list, options) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_board__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/board */ "./src/components/board.ts");
+/* harmony import */ var _bin_game__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bin/game */ "./src/bin/game.ts");
 /* harmony import */ var _css_board_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./css/board.css */ "./src/css/board.css");
 /* harmony import */ var _css_board_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_board_css__WEBPACK_IMPORTED_MODULE_1__);
 /* TODO
@@ -501,11 +501,107 @@ __webpack_require__.r(__webpack_exports__);
 */
 
 
-var main = document.createElement("div");
-main.id = "main";
-var board = new _components_board__WEBPACK_IMPORTED_MODULE_0__["default"]();
-main.appendChild(board.render());
-document.body.appendChild(main);
+// const main = document.createElement("div");
+// main.id = "main";
+var game = new _bin_game__WEBPACK_IMPORTED_MODULE_0__["default"]();
+
+
+/***/ }),
+
+/***/ "./src/bin/game.ts":
+/*!*************************!*\
+  !*** ./src/bin/game.ts ***!
+  \*************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _settings_game_funcs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../settings/game-funcs */ "./src/settings/game-funcs.ts");
+/* harmony import */ var _components_ball__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/ball */ "./src/components/ball.ts");
+/* harmony import */ var _components_board__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/board */ "./src/components/board.ts");
+/* harmony import */ var _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../settings/static-settings */ "./src/settings/static-settings.ts");
+
+
+
+
+var Game = /** @class */ (function () {
+    //   private ballArr: Array<Array<number | string>> = [];
+    //   private balls: Array<Array<Ball>> = [];
+    function Game() {
+        this.BoardClass = new _components_board__WEBPACK_IMPORTED_MODULE_2__["default"]();
+        this.BoardClass.render();
+        this.board = document.getElementById("container");
+        for (var i = 0; i < 9; i++) {
+            _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr.push([]);
+            for (var j = 0; j < 9; j++)
+                _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[i].push(0);
+        }
+        for (var i = 0; i < 9; i++) {
+            _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].balls.push([]);
+            for (var j = 0; j < 9; j++)
+                _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].balls[i].push(null);
+        }
+        this.drawBalls();
+    }
+    Game.prototype.drawBalls = function () {
+        for (var i = 0; i < 18; i++) {
+            var colorIndex = Math.round(Math.random() * 7);
+            colorIndex > 6 ? colorIndex-- : null;
+            console.log(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_0__["ColorsArr"][colorIndex]);
+            while (true) {
+                var x = Math.floor(Math.random() * 9);
+                var y = Math.floor(Math.random() * 9);
+                if (_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[y][x] == 0) {
+                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[y][x] = _settings_game_funcs__WEBPACK_IMPORTED_MODULE_0__["ColorsArr"][colorIndex][0].toUpperCase();
+                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].balls[y][x] = new _components_ball__WEBPACK_IMPORTED_MODULE_1__["default"](_settings_game_funcs__WEBPACK_IMPORTED_MODULE_0__["ColorsArr"][colorIndex], _settings_game_funcs__WEBPACK_IMPORTED_MODULE_0__["ColorsArr"][colorIndex][0].toUpperCase(), { x: x, y: y });
+                    var endIndex = Object(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_0__["calcTileIndex"])(x + "_" + y);
+                    var tile = document.getElementById(x + "_" + y + "-" + endIndex);
+                    tile.appendChild(_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].balls[y][x].render());
+                    break;
+                    //   this.
+                }
+            }
+            console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].balls);
+            console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr);
+        }
+    };
+    return Game;
+}());
+/* harmony default export */ __webpack_exports__["default"] = (Game);
+
+
+/***/ }),
+
+/***/ "./src/components/ball.ts":
+/*!********************************!*\
+  !*** ./src/components/ball.ts ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _css_board_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/board.css */ "./src/css/board.css");
+/* harmony import */ var _css_board_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_board_css__WEBPACK_IMPORTED_MODULE_0__);
+
+var Ball = /** @class */ (function () {
+    function Ball(color, colorId, position) {
+        this.color = color;
+        this.idColor = colorId;
+        this.point = position;
+    }
+    Ball.prototype.render = function () {
+        var ball = document.createElement("div");
+        ball.className = "ball";
+        ball.id = this.point.y + "_" + this.point.x;
+        ball.style.backgroundColor = this.color;
+        // ball.style.transition = "background 0.4s ease-in-out";
+        return ball;
+    };
+    return Ball;
+}());
+/* harmony default export */ __webpack_exports__["default"] = (Ball);
 
 
 /***/ }),
@@ -532,10 +628,23 @@ var Board = /** @class */ (function () {
     function Board() {
         var _this = this;
         this.boardDiv = document.createElement("div");
+        this.endPath = function (e) {
+            console.log(_this.path);
+            for (var i = 0; i < 9; i++) {
+                var row = document.body.lastElementChild.firstElementChild.children[i];
+                for (var j = 0; j < 9; j++)
+                    row.children[j].style.backgroundColor =
+                        "rgb(60, 60, 60)";
+            }
+            _this.boardDiv.removeEventListener("mousemove", _this.drawPath);
+            _this.boardDiv.removeEventListener("click", _this.endPath);
+            _this.boardDiv.addEventListener("click", _this.startPath);
+            _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = false;
+        };
         this.startPath = function (e) {
             var indexA = e.target.id.slice(4, 6);
             _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile = _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].tilesList[parseInt(indexA)];
-            e.target.style.backgroundColor = "pink";
+            e.target.style.backgroundColor = "rgb(140, 140, 140)";
             _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = true;
             // calcPath(
             //   { x: Settings.firstTile.x, y: Settings.firstTile.y },
@@ -543,6 +652,7 @@ var Board = /** @class */ (function () {
             // );
             _this.boardDiv.removeEventListener("click", _this.startPath);
             _this.boardDiv.addEventListener("mousemove", _this.drawPath);
+            _this.boardDiv.addEventListener("click", _this.endPath);
         };
         this.drawPath = function (e) {
             var indexB = e.target.id.slice(4, 6);
@@ -552,17 +662,15 @@ var Board = /** @class */ (function () {
             for (var i = 0; i < 9; i++) {
                 var row = document.body.lastElementChild.firstElementChild.children[i];
                 for (var j = 0; j < 9; j++)
-                    row.children[j].style.backgroundColor = "white";
+                    row.children[j].style.backgroundColor =
+                        "rgb(60, 60, 60)";
             }
-            e.target.style.backgroundColor = "pink";
+            e.target.style.backgroundColor = "rgb(140, 140, 140)";
             for (var i = 0; i < _this.path.pathIds.length; i++) {
-                var indexEnd = (parseInt(_this.path.pathIds[i][2]) * 9 +
-                    parseInt(_this.path.pathIds[i][0])).toString();
-                var end = void 0;
-                parseInt(indexEnd) < 10 ? (end = "0" + indexEnd) : (end = indexEnd);
+                var end = Object(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_1__["calcTileIndex"])(_this.path.pathIds[i]);
                 console.log(end);
                 var div = document.getElementById(_this.path.pathIds[i] + ("-" + end));
-                div.style.backgroundColor = "pink";
+                div.style.backgroundColor = "rgb(140, 140, 140)";
             }
             // let coeff = findCoefficients(
             //   { x: Settings.firstTile.x, y: Settings.firstTile.y },
@@ -587,7 +695,10 @@ var Board = /** @class */ (function () {
         }
         console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].tilesList);
         this.boardDiv.addEventListener("click", this.startPath);
-        return this.boardDiv;
+        var main = document.createElement("div");
+        main.id = "main";
+        main.appendChild(this.boardDiv);
+        document.body.appendChild(main);
     };
     return Board;
 }());
@@ -705,27 +816,40 @@ if (content.locals) {
 /*!************************************!*\
   !*** ./src/settings/game-funcs.ts ***!
   \************************************/
-/*! exports provided: Colors, signArr, pathArr, controlM, findCoefficients, findTileY, calcPath */
+/*! exports provided: ColorsArr, Colors, signArr, pathArr, controlM, findCoefficients, findTileY, calcTileIndex, calcPath */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ColorsArr", function() { return ColorsArr; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Colors", function() { return Colors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signArr", function() { return signArr; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pathArr", function() { return pathArr; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "controlM", function() { return controlM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findCoefficients", function() { return findCoefficients; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findTileY", function() { return findTileY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calcTileIndex", function() { return calcTileIndex; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calcPath", function() { return calcPath; });
+/* harmony import */ var _static_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./static-settings */ "./src/settings/static-settings.ts");
+
+var ColorsArr = [
+    "red",
+    "orange",
+    "indigo",
+    "sienna",
+    "magenta",
+    "green",
+    "dodgerblue"
+];
 var Colors;
 (function (Colors) {
-    Colors[Colors["red"] = 0] = "red";
-    Colors[Colors["cyan"] = 1] = "cyan";
-    Colors[Colors["green"] = 2] = "green";
-    Colors[Colors["yellow"] = 3] = "yellow";
-    Colors[Colors["violet"] = 4] = "violet";
-    Colors[Colors["orange"] = 5] = "orange";
-    Colors[Colors["pink"] = 6] = "pink";
+    Colors["firebrick"] = "F";
+    Colors["darkturquise"] = "D";
+    Colors["lightseagreen"] = "L";
+    Colors["yellow"] = "Y";
+    Colors["magenta"] = "M";
+    Colors["green"] = "G";
+    Colors["teal"] = "T";
 })(Colors || (Colors = {}));
 var signArr = [];
 var pathArr = [];
@@ -741,52 +865,65 @@ var findTileY = function (x, coefficient) {
     console.log(y);
     return y;
 };
+var calcTileIndex = function (tileId) {
+    var indexEnd = (parseInt(tileId[2]) * 9 + parseInt(tileId[0])).toString();
+    var end;
+    parseInt(indexEnd) < 10 ? (end = "0" + indexEnd) : (end = indexEnd);
+    return end;
+};
 var calcPath = function (pointA, pointB) {
     signArr = [];
     pathArr = [];
     controlM = false;
-    for (var i = 0; i < 9; i++)
-        signArr.push([0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    for (var i = 0; i < 9; i++) {
+        signArr.push([]);
+        for (var j = 0; j < 9; j++)
+            _static_settings__WEBPACK_IMPORTED_MODULE_0__["default"].ballArr[i][j] == 0
+                ? (signArr[i][j] = 0)
+                : (signArr[i][j] = _static_settings__WEBPACK_IMPORTED_MODULE_0__["default"].ballArr[i][j]);
+    }
     for (var i = 0; i < 9; i++) {
         pathArr.push([]);
         for (var j = 0; j < 9; j++)
             pathArr[i].push([]);
     }
-    signArr[pointA.y][pointA.x] = "S";
-    // pathArr[pointA.y][pointA.x].push(`${pointA.y}_${pointA.x}`);
-    signArr[pointB.y][pointB.x] = "M";
-    if (pointA.y < pointB.y) {
-        for (var i = 0; i < 9; i++) {
+    signArr[pointA.y][pointA.x] = "A";
+    signArr[pointB.y][pointB.x] = "Z";
+    return calcArrayNums(pointA, pointB, signArr, pathArr);
+};
+var calcArrayNums = function (pointA, pointB, arr, arrIds) {
+    // console.log(counter);
+    if (pointA.y < pointB.y)
+        for (var i = 0; i < 9; i++)
             if (pointA.x < pointB.x)
                 for (var j = 0; j < 9; j++)
-                    createPathNums({ i: i, j: j }, signArr, pathArr);
+                    createPathNums({ i: i, j: j }, arr, arrIds);
             else
                 for (var j = 8; j >= 0; j--)
-                    createPathNums({ i: i, j: j }, signArr, pathArr);
-            if (controlM)
-                break;
-        }
-    }
-    else {
-        for (var i = 8; i >= 0; i--) {
+                    createPathNums({ i: i, j: j }, arr, arrIds);
+    else
+        for (var i = 8; i >= 0; i--)
             if (pointA.x < pointB.x)
                 for (var j = 0; j < 9; j++)
-                    createPathNums({ i: i, j: j }, signArr, pathArr);
+                    createPathNums({ i: i, j: j }, arr, arrIds);
             else
                 for (var j = 8; j >= 0; j--)
-                    createPathNums({ i: i, j: j }, signArr, pathArr);
-            if (controlM)
-                break;
+                    createPathNums({ i: i, j: j }, arr, arrIds);
+    if (arrIds[pointB.y][pointB.x].length == 0)
+        calcArrayNums(pointA, pointB, arr, arrIds);
+    for (var i = 1; i < pathArr[pointB.y][pointB.x].length; i++)
+        if (pathArr[pointB.y][pointB.x][0] == pathArr[pointB.y][pointB.x][i]) {
+            pathArr[pointB.y][pointB.x] = pathArr[pointB.y][pointB.x].slice(0, i + 1);
+            break;
         }
-    }
     var newPathArrays = {
-        pathNum: signArr,
-        pathIds: pathArr[pointB.y][pointB.x]
+        pathNum: arr,
+        pathIds: arrIds[pointB.y][pointB.x]
     };
     return newPathArrays;
 };
 var createPathNums = function (index, arr, arrIds) {
-    if (arr[index.i][index.j] == "S")
+    if (arr[index.i][index.j] == "A")
         assignValues(1, { i: index.i, j: index.j }, arr, arrIds);
     // if (controlM) break;
     else if (arr[index.i][index.j] > 0)
@@ -802,23 +939,22 @@ var assignValues = function (val, index, arr, arrIds) {
 var assignNewValue = function (val, index, arr, arrIds, shift) {
     try {
         if (arr[index.i - shift.i][index.j - shift.j] == 0 ||
-            arr[index.i - shift.i][index.j - shift.j] == "M") {
-            if (arr[index.i - shift.i][index.j - shift.j] != "M")
+            arr[index.i - shift.i][index.j - shift.j] == "Z") {
+            if (arr[index.i - shift.i][index.j - shift.j] != "Z")
                 arr[index.i - shift.i][index.j - shift.j] = val;
-            if (arr[index.i][index.j] == "S")
+            if (arr[index.i][index.j] == "A")
                 arrIds[index.i - shift.i][index.j - shift.j].push(index.j + "_" + index.i);
             else {
-                console.log(arrIds[index.i][index.j]);
+                // console.log(arrIds[index.i][index.j]);
                 arrIds[index.i - shift.i][index.j - shift.j] = arrIds[index.i - shift.i][index.j - shift.j].concat(arrIds[index.i][index.j]);
                 arrIds[index.i - shift.i][index.j - shift.j].push(index.j + "_" + index.i);
             }
         }
-        if (arr[index.i - shift.i][index.j - shift.j] == "M")
-            controlM = true;
+        // if (arr[index.i - shift.i][index.j - shift.j] == "Z") controlM = true;
     }
     catch (err) {
-        console.log(err);
-        console.log(arr);
+        // console.log(err);
+        // console.log(arr);
     }
 };
 
@@ -852,6 +988,8 @@ var Settings = /** @class */ (function () {
         [0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0]
     ];
+    Settings.ballArr = [];
+    Settings.balls = [];
     return Settings;
 }());
 /* harmony default export */ __webpack_exports__["default"] = (Settings);

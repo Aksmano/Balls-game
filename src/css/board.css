@@ -20,7 +20,7 @@
   height: 500px;
   flex: 9;
   flex-direction: column;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .row {
@@ -32,12 +32,48 @@
   display: flex;
   flex: 1;
   box-sizing: border-box;
-  border: 1px solid black;
+  border: 1px solid white;
+  background-color: rgb(60, 60, 60);
 }
 
 .ball {
   border-radius: 50%;
   display: flex;
-  flex: 0.8;
-  border: 1px solid black;
+  flex: 1;
+  border: 5px solid white;
+  margin: 12%;
+  animation: border-unhover 0.5s ease-in-out;
+}
+
+.ball:hover {
+  animation: border-hover 0.5s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes border-hover {
+  0% {
+    border: 5px solid white;
+  }
+  100% {
+    border: none;
+  }
+}
+
+@keyframes border-unhover {
+  0% {
+    border: none;
+  }
+  100% {
+    border: 5px solid white;
+  }
 }
