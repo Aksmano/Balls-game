@@ -165,7 +165,7 @@ const createPathNums = (
   // if (controlM) break;
 };
 
-const isAvailable = (point: Point, arr: Array<Array<any>>): boolean => {
+export const isAvailable = (point: Point, arr: Array<Array<any>>): boolean => {
   let isAvail: number = 0;
   isAvail += isColorNext(point, { x: 1, y: 0 }, arr);
   isAvail += isColorNext(point, { x: -1, y: 0 }, arr);

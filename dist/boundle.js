@@ -97,7 +97,7 @@
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = module.exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "/* body {\n  margin: 0 auto;\n  padding: 0;\n} */\n\n#main {\n  /* width: 100vw;\n  height: 100vh; */\n  /* margin: 0 auto; */\n  /* padding: 0; */\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n#container {\n  display: flex;\n  width: 500px;\n  height: 500px;\n  flex-direction: column;\n  /* border: 1px solid black; */\n}\n\n.row {\n  display: flex;\n  flex: 1;\n}\n\n.tile {\n  display: flex;\n  flex: 1;\n  box-sizing: border-box;\n  border: 1px solid white;\n  background-color: rgb(60, 60, 60);\n}\n\n.ball {\n  border-radius: 50%;\n  display: flex;\n  flex: 1;\n  border: 5px solid white;\n  margin: 12%;\n  /* animation: border-unhover 0.5s ease-in-out; */\n}\n\n.ball:hover {\n  /* animation: border-hover 0.5s ease-in-out; */\n  border: none;\n  cursor: pointer;\n}\n\n/* .ball:active {\n    border: none;\n} */\n\n@keyframes slide-up {\n  0% {\n    opacity: 0;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n\n@keyframes border-hover {\n  0% {\n    border: 5px solid white;\n  }\n  100% {\n    border: none;\n  }\n}\n\n@keyframes border-unhover {\n  0% {\n    border: none;\n  }\n  100% {\n    border: 5px solid white;\n  }\n}\n", ""]);
+exports.push([module.i, "/* body {\r\n  margin: 0 auto;\r\n  padding: 0;\r\n} */\r\n\r\n#main {\r\n  /* width: 100vw;\r\n  height: 100vh; */\r\n  /* margin: 0 auto; */\r\n  /* padding: 0; */\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#container {\r\n  display: flex;\r\n  width: 500px;\r\n  height: 500px;\r\n  flex-direction: column;\r\n  /* border: 1px solid black; */\r\n}\r\n\r\n.row {\r\n  display: flex;\r\n  flex: 1;\r\n}\r\n\r\n.tile {\r\n  display: flex;\r\n  flex: 1;\r\n  box-sizing: border-box;\r\n  border: 1px solid white;\r\n  background-color: rgb(60, 60, 60);\r\n}\r\n\r\n.ball {\r\n  border-radius: 50%;\r\n  display: flex;\r\n  flex: 1;\r\n  border: 5px solid white;\r\n  margin: 12%;\r\n  /* animation: border-unhover 0.5s ease-in-out; */\r\n}\r\n\r\n.ball:hover {\r\n  /* animation: border-hover 0.5s ease-in-out; */\r\n  border: none;\r\n  cursor: pointer;\r\n}\r\n\r\n/* .ball:active {\r\n    border: none;\r\n} */\r\n\r\n@keyframes slide-up {\r\n  0% {\r\n    opacity: 0;\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n  }\r\n}\r\n\r\n@keyframes border-hover {\r\n  0% {\r\n    border: 5px solid white;\r\n  }\r\n  100% {\r\n    border: none;\r\n  }\r\n}\r\n\r\n@keyframes border-unhover {\r\n  0% {\r\n    border: none;\r\n  }\r\n  100% {\r\n    border: 5px solid white;\r\n  }\r\n}\r\n", ""]);
 
 
 /***/ }),
@@ -566,6 +566,7 @@ var Game = /** @class */ (function () {
             //   console.log(Settings.balls);
             //   console.log(Settings.ballArr);
         }
+        // console.log(Settings.ballArr);
     };
     return Game;
 }());
@@ -635,34 +636,68 @@ var Board = /** @class */ (function () {
             console.log("CHUUUUJ");
         };
         this.endPath = function (e) {
-            console.log(_this.path);
             for (var i = 0; i < 9; i++) {
-                var row = document.body.lastElementChild.firstElementChild.children[i];
+                var row = document.body.children[1].firstElementChild.children[i];
                 for (var j = 0; j < 9; j++)
                     row.children[j].style.backgroundColor =
                         "rgb(60, 60, 60)";
             }
-            if (e.target.className == "tile" &&
-                e.target.id != _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id.slice(0, 3))
-                e.target.appendChild(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML);
-            console.log(e.target);
-            console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML);
-            _this.ballClick();
-            _this.boardDiv.removeEventListener("mousemove", _this.drawPath);
-            _this.boardDiv.removeEventListener("click", _this.endPath);
-            _this.boardDiv.addEventListener("click", _this.startPath);
-            _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = false;
+            if (_this.path.pathIds.length > 0) {
+                if (e.target.className == "ball") {
+                    _this.ballClick();
+                    var indexA = e.target.parentElement.id.slice(4, 6);
+                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML = e.target;
+                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile = _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].tilesList[parseInt(indexA)];
+                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.style.border = "5px solid white";
+                    e.target.style.border = "none";
+                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = true;
+                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallColor = _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.style.backgroundColor[0].toUpperCase();
+                }
+                else if (e.target.className == "tile" &&
+                    e.target.id !=
+                        _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id.slice(0, 3)) {
+                    e.target.appendChild(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML);
+                    console.log(e.target);
+                    console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML);
+                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].ballArr = _this.path.pathNum;
+                    _this.path.pathNum[_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile.y][_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile.x] = 0;
+                    _this.path.pathNum[_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile.y][_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile.x] =
+                        _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallColor;
+                    console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].ballArr);
+                    for (var i = 0; i < 9; i++)
+                        for (var j = 0; j < 9; j++)
+                            if (_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].ballArr[i][j] > 0)
+                                _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].ballArr[i][j] = 0;
+                    _this.ballClick();
+                    _this.boardDiv.removeEventListener("mousemove", _this.drawPath);
+                    _this.boardDiv.removeEventListener("click", _this.endPath);
+                    _this.boardDiv.addEventListener("click", _this.startPath);
+                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = false;
+                }
+                else if (e.target.id ==
+                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id.slice(0, 3)) {
+                    _this.ballClick();
+                    _this.boardDiv.removeEventListener("mousemove", _this.drawPath);
+                    _this.boardDiv.removeEventListener("click", _this.endPath);
+                    _this.boardDiv.addEventListener("click", _this.startPath);
+                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = false;
+                }
+            }
+            else
+                e.target.style.backgroundColor = "rgb(255, 0, 0)";
         };
         this.startPath = function (e) {
             if (e.target.className == "ball") {
                 var indexA = e.target.parentElement.id.slice(4, 6);
                 _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML = e.target;
                 _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile = _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].tilesList[parseInt(indexA)];
-                e.target.parentElement.style.backgroundColor =
-                    "rgb(140, 140, 140)";
+                // (<HTMLDivElement>e.target).parentElement.style.backgroundColor =
+                //   "rgb(140, 140, 140)";
                 e.target.style.border = "none";
                 _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = true;
-                e.target.addEventListener("click", _this.ballClick);
+                _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallColor = _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.style.backgroundColor[0].toUpperCase();
+                // console.log(Settings.clickedBallHTML.style.backgroundColor[0].toUpperCase());
+                _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.addEventListener("click", _this.ballClick);
                 _this.boardDiv.removeEventListener("click", _this.startPath);
                 _this.boardDiv.addEventListener("mousemove", _this.drawPath);
                 _this.boardDiv.addEventListener("click", _this.endPath);
@@ -670,16 +705,19 @@ var Board = /** @class */ (function () {
         };
         this.drawPath = function (e) {
             for (var i = 0; i < 9; i++) {
-                var row = document.body.lastElementChild.firstElementChild.children[i];
+                var row = document.body.children[1].firstElementChild.children[i];
                 for (var j = 0; j < 9; j++)
                     row.children[j].style.backgroundColor =
                         "rgb(60, 60, 60)";
             }
-            if (e.target.className == "ball" &&
-                e.target.id == _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id) {
-                // console.log("dupadupadupa");
-                // console.log((<HTMLDivElement>e.target).id);
-                // console.log(Settings.clickedBallHTML.id.slice(0, 3));
+            console.log(e.target.id.slice(0, 3));
+            console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id);
+            if (e.target.className == "ball" ||
+                e.target.id == _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id ||
+                e.target.id.slice(0, 3) == _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id) {
+                console.log("dupadupadupa");
+                console.log(e.target.id);
+                console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id);
             }
             else {
                 var indexB = e.target.id.slice(4, 6);
@@ -834,7 +872,7 @@ if (content.locals) {
 /*!************************************!*\
   !*** ./src/settings/game-funcs.ts ***!
   \************************************/
-/*! exports provided: ColorsArr, Colors, signArr, pathArr, controlM, findCoefficients, findTileY, calcTileIndex, calcPath */
+/*! exports provided: ColorsArr, Colors, signArr, pathArr, controlM, findCoefficients, findTileY, calcTileIndex, calcPath, isAvailable */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -848,6 +886,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findTileY", function() { return findTileY; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calcTileIndex", function() { return calcTileIndex; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calcPath", function() { return calcPath; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isAvailable", function() { return isAvailable; });
 /* harmony import */ var _static_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./static-settings */ "./src/settings/static-settings.ts");
 
 var ColorsArr = [

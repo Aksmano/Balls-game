@@ -49,5 +49,7 @@ export default class Game {
     //   console.log(Settings.balls);
     //   console.log(Settings.ballArr);
     }
+    // console.log(Settings.ballArr);
+    
   }
 }
