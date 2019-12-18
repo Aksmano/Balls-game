@@ -22,7 +22,7 @@ export interface Path {
 }
 
 export const ColorsArr: Array<string> = [
-  "red",
+  "crimson",
   "orange",
   "indigo",
   "sienna",
@@ -86,17 +86,18 @@ export const calcPath = (pointA: Point, pointB: Point): Path => {
   signArr[pointA.y][pointA.x] = "A";
   signArr[pointB.y][pointB.x] = "Z";
 
-  return calcArrayNums(pointA, pointB, signArr, pathArr);
+  if (isAvailable(pointB, signArr))
+    return calcArrayNums(0, pointA, pointB, signArr, pathArr);
+  return { pathNum: signArr, pathIds: [] };
 };
 
 const calcArrayNums = (
+  recursionCounter: number,
   pointA: Point,
   pointB: Point,
   arr: Array<Array<any>>,
   arrIds: Array<Array<Array<string>>>
 ): Path => {
-  // console.log(counter);
-
   if (pointA.y < pointB.y)
     for (let i = 0; i < 9; i++)
       if (pointA.x < pointB.x)
@@ -112,14 +113,32 @@ const calcArrayNums = (
         for (let j = 8; j >= 0; j--)
           createPathNums({ i: i, j: j }, arr, arrIds);
 
-  if (arrIds[pointB.y][pointB.x].length == 0)
-    calcArrayNums(pointA, pointB, arr, arrIds);
-
   for (let i = 1; i < pathArr[pointB.y][pointB.x].length; i++)
     if (pathArr[pointB.y][pointB.x][0] == pathArr[pointB.y][pointB.x][i]) {
       pathArr[pointB.y][pointB.x] = pathArr[pointB.y][pointB.x].slice(0, i + 1);
       break;
     }
+
+  try {
+    if (arrIds[pointB.y][pointB.x].length == 0)
+      try {
+        if (recursionCounter < 15) {
+          console.log("recursion lvl: ", recursionCounter);
+          recursionCounter++;
+          calcArrayNums(recursionCounter, pointA, pointB, arr, arrIds);
+        } else {
+          const newPathArrays: Path = {
+            pathNum: arr,
+            pathIds: arrIds[pointB.y][pointB.x]
+          };
+          return newPathArrays;
+        }
+      } catch (err) {
+        console.log(err);
+      }
+  } catch (err) {
+    console.log(err);
+  }
 
   const newPathArrays: Path = {
     pathNum: arr,
@@ -127,6 +146,7 @@ const calcArrayNums = (
   };
   return newPathArrays;
 };
+
 const createPathNums = (
   index: ArrayIndex,
   arr: Array<Array<any>>,
@@ -143,6 +163,43 @@ const createPathNums = (
       arrIds
     );
   // if (controlM) break;
+};
+
+const isAvailable = (point: Point, arr: Array<Array<any>>): boolean => {
+  let isAvail: number = 0;
+  isAvail += isColorNext(point, { x: 1, y: 0 }, arr);
+  isAvail += isColorNext(point, { x: -1, y: 0 }, arr);
+  isAvail += isColorNext(point, { x: 0, y: -1 }, arr);
+  isAvail += isColorNext(point, { x: 0, y: 1 }, arr);
+  if (isAvail == 4) return false;
+  return true;
+};
+
+const isColorNext = (
+  point: Point,
+  shift: Point,
+  arr: Array<Array<any>>
+): number => {
+  // console.log(point.y - shift.y, point.x - shift.x);
+  // console.log(arr[point.y - shift.y][point.x - shift.x]);
+
+  try {
+    if (
+      arr[point.y - shift.y][point.x - shift.x] == "C" ||
+      arr[point.y - shift.y][point.x - shift.x] == "O" ||
+      arr[point.y - shift.y][point.x - shift.x] == "I" ||
+      arr[point.y - shift.y][point.x - shift.x] == "S" ||
+      arr[point.y - shift.y][point.x - shift.x] == "M" ||
+      arr[point.y - shift.y][point.x - shift.x] == "G" ||
+      arr[point.y - shift.y][point.x - shift.x] == "D" ||
+      arr[point.y - shift.y][point.x - shift.x] == undefined
+    )
+      return 1;
+  } catch (err) {
+    // console.log(err);
+    return 1;
+  }
+  return 0;
 };
 
 const assignValues = (

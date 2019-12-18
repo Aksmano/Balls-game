@@ -97,7 +97,7 @@
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = module.exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "/* body {\n  margin: 0 auto;\n  padding: 0;\n} */\n\n#main {\n  /* width: 100vw;\n  height: 100vh; */\n  /* margin: 0 auto; */\n  /* padding: 0; */\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n#container {\n  display: flex;\n  width: 500px;\n  height: 500px;\n  flex: 9;\n  flex-direction: column;\n  /* border: 1px solid black; */\n}\n\n.row {\n  display: flex;\n  flex: 1;\n}\n\n.tile {\n  display: flex;\n  flex: 1;\n  box-sizing: border-box;\n  border: 1px solid white;\n  background-color: rgb(60, 60, 60);\n}\n\n.ball {\n  border-radius: 50%;\n  display: flex;\n  flex: 1;\n  border: 5px solid white;\n  margin: 12%;\n  animation: border-unhover 0.5s ease-in-out;\n}\n\n.ball:hover {\n  animation: border-hover 0.5s ease-in-out;\n  border: none;\n  cursor: pointer;\n}\n\n@keyframes slide-up {\n  0% {\n    opacity: 0;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n\n@keyframes border-hover {\n  0% {\n    border: 5px solid white;\n  }\n  100% {\n    border: none;\n  }\n}\n\n@keyframes border-unhover {\n  0% {\n    border: none;\n  }\n  100% {\n    border: 5px solid white;\n  }\n}\n", ""]);
+exports.push([module.i, "/* body {\n  margin: 0 auto;\n  padding: 0;\n} */\n\n#main {\n  /* width: 100vw;\n  height: 100vh; */\n  /* margin: 0 auto; */\n  /* padding: 0; */\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n#container {\n  display: flex;\n  width: 500px;\n  height: 500px;\n  flex-direction: column;\n  /* border: 1px solid black; */\n}\n\n.row {\n  display: flex;\n  flex: 1;\n}\n\n.tile {\n  display: flex;\n  flex: 1;\n  box-sizing: border-box;\n  border: 1px solid white;\n  background-color: rgb(60, 60, 60);\n}\n\n.ball {\n  border-radius: 50%;\n  display: flex;\n  flex: 1;\n  border: 5px solid white;\n  margin: 12%;\n  /* animation: border-unhover 0.5s ease-in-out; */\n}\n\n.ball:hover {\n  /* animation: border-hover 0.5s ease-in-out; */\n  border: none;\n  cursor: pointer;\n}\n\n/* .ball:active {\n    border: none;\n} */\n\n@keyframes slide-up {\n  0% {\n    opacity: 0;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n\n@keyframes border-hover {\n  0% {\n    border: 5px solid white;\n  }\n  100% {\n    border: none;\n  }\n}\n\n@keyframes border-unhover {\n  0% {\n    border: none;\n  }\n  100% {\n    border: 5px solid white;\n  }\n}\n", ""]);
 
 
 /***/ }),
@@ -556,14 +556,15 @@ var Game = /** @class */ (function () {
                     _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[y][x] = _settings_game_funcs__WEBPACK_IMPORTED_MODULE_0__["ColorsArr"][colorIndex][0].toUpperCase();
                     _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].balls[y][x] = new _components_ball__WEBPACK_IMPORTED_MODULE_1__["default"](_settings_game_funcs__WEBPACK_IMPORTED_MODULE_0__["ColorsArr"][colorIndex], _settings_game_funcs__WEBPACK_IMPORTED_MODULE_0__["ColorsArr"][colorIndex][0].toUpperCase(), { x: x, y: y });
                     var endIndex = Object(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_0__["calcTileIndex"])(x + "_" + y);
+                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].tilesList[parseInt(endIndex)].isBall = true;
                     var tile = document.getElementById(x + "_" + y + "-" + endIndex);
                     tile.appendChild(_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].balls[y][x].render());
                     break;
                     //   this.
                 }
             }
-            console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].balls);
-            console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr);
+            //   console.log(Settings.balls);
+            //   console.log(Settings.ballArr);
         }
     };
     return Game;
@@ -594,7 +595,7 @@ var Ball = /** @class */ (function () {
     Ball.prototype.render = function () {
         var ball = document.createElement("div");
         ball.className = "ball";
-        ball.id = this.point.y + "_" + this.point.x;
+        ball.id = this.point.x + "_" + this.point.y;
         ball.style.backgroundColor = this.color;
         // ball.style.transition = "background 0.4s ease-in-out";
         return ball;
@@ -628,6 +629,11 @@ var Board = /** @class */ (function () {
     function Board() {
         var _this = this;
         this.boardDiv = document.createElement("div");
+        this.ballClick = function (e) {
+            _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.removeEventListener("click", _this.ballClick);
+            _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.style.border = "5px solid white";
+            console.log("CHUUUUJ");
+        };
         this.endPath = function (e) {
             console.log(_this.path);
             for (var i = 0; i < 9; i++) {
@@ -636,55 +642,67 @@ var Board = /** @class */ (function () {
                     row.children[j].style.backgroundColor =
                         "rgb(60, 60, 60)";
             }
+            if (e.target.className == "tile" &&
+                e.target.id != _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id.slice(0, 3))
+                e.target.appendChild(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML);
+            console.log(e.target);
+            console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML);
+            _this.ballClick();
             _this.boardDiv.removeEventListener("mousemove", _this.drawPath);
             _this.boardDiv.removeEventListener("click", _this.endPath);
             _this.boardDiv.addEventListener("click", _this.startPath);
             _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = false;
         };
         this.startPath = function (e) {
-            var indexA = e.target.id.slice(4, 6);
-            _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile = _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].tilesList[parseInt(indexA)];
-            e.target.style.backgroundColor = "rgb(140, 140, 140)";
-            _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = true;
-            // calcPath(
-            //   { x: Settings.firstTile.x, y: Settings.firstTile.y },
-            //   { x: 4, y: 4 }
-            // );
-            _this.boardDiv.removeEventListener("click", _this.startPath);
-            _this.boardDiv.addEventListener("mousemove", _this.drawPath);
-            _this.boardDiv.addEventListener("click", _this.endPath);
+            if (e.target.className == "ball") {
+                var indexA = e.target.parentElement.id.slice(4, 6);
+                _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML = e.target;
+                _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile = _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].tilesList[parseInt(indexA)];
+                e.target.parentElement.style.backgroundColor =
+                    "rgb(140, 140, 140)";
+                e.target.style.border = "none";
+                _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = true;
+                e.target.addEventListener("click", _this.ballClick);
+                _this.boardDiv.removeEventListener("click", _this.startPath);
+                _this.boardDiv.addEventListener("mousemove", _this.drawPath);
+                _this.boardDiv.addEventListener("click", _this.endPath);
+            }
         };
         this.drawPath = function (e) {
-            var indexB = e.target.id.slice(4, 6);
-            _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile = _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].tilesList[parseInt(indexB)];
-            console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile);
-            _this.path = Object(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_1__["calcPath"])({ x: _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile.x, y: _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile.y }, { x: _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile.x, y: _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile.y });
             for (var i = 0; i < 9; i++) {
                 var row = document.body.lastElementChild.firstElementChild.children[i];
                 for (var j = 0; j < 9; j++)
                     row.children[j].style.backgroundColor =
                         "rgb(60, 60, 60)";
             }
-            e.target.style.backgroundColor = "rgb(140, 140, 140)";
-            for (var i = 0; i < _this.path.pathIds.length; i++) {
-                var end = Object(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_1__["calcTileIndex"])(_this.path.pathIds[i]);
-                console.log(end);
-                var div = document.getElementById(_this.path.pathIds[i] + ("-" + end));
-                div.style.backgroundColor = "rgb(140, 140, 140)";
+            if (e.target.className == "ball" &&
+                e.target.id == _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id) {
+                // console.log("dupadupadupa");
+                // console.log((<HTMLDivElement>e.target).id);
+                // console.log(Settings.clickedBallHTML.id.slice(0, 3));
             }
-            // let coeff = findCoefficients(
-            //   { x: Settings.firstTile.x, y: Settings.firstTile.y },
-            //   { x: Settings.lastTile.x, y: Settings.lastTile.y }
-            // );
-            // console.log(coeff);
-            // for (let x = 0; x < 9; x++) {
-            //   let y: number = Math.round(findTileY(x, { a: coeff.a, b: coeff.b }));
-            //   console.log(y);
-            //   y <= Settings.lastTile.y
-            //     ? console.log("mniejsze")
-            //     : console.log("wieksze");
-            // }
-            // (<HTMLDivElement>e.target).style.backgroundColor = "pink";
+            else {
+                var indexB = e.target.id.slice(4, 6);
+                _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile = _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].tilesList[parseInt(indexB)];
+                _this.path = Object(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_1__["calcPath"])({ x: _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile.x, y: _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile.y }, { x: _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile.x, y: _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile.y });
+                for (var i = 1; i < _this.path.pathIds.length; i++)
+                    if (_this.path.pathIds[0] == _this.path.pathIds[i]) {
+                        _this.path.pathIds = _this.path.pathIds.slice(0, i);
+                        break;
+                    }
+                for (var i = 0; i < _this.path.pathIds.length; i++) {
+                    var end = Object(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_1__["calcTileIndex"])(_this.path.pathIds[i]);
+                    console.log(end);
+                    var div = document.getElementById(_this.path.pathIds[i] + ("-" + end));
+                    div.style.backgroundColor = "rgb(140, 140, 140)";
+                }
+                if (_this.path.pathIds.length == 0 &&
+                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile != _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile)
+                    e.target.style.backgroundColor = "rgb(255, 0, 0)";
+                else
+                    e.target.style.backgroundColor =
+                        "rgb(140, 140, 140)";
+            }
         };
     }
     Board.prototype.render = function () {
@@ -833,7 +851,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _static_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./static-settings */ "./src/settings/static-settings.ts");
 
 var ColorsArr = [
-    "red",
+    "crimson",
     "orange",
     "indigo",
     "sienna",
@@ -889,10 +907,11 @@ var calcPath = function (pointA, pointB) {
     }
     signArr[pointA.y][pointA.x] = "A";
     signArr[pointB.y][pointB.x] = "Z";
-    return calcArrayNums(pointA, pointB, signArr, pathArr);
+    if (isAvailable(pointB, signArr))
+        return calcArrayNums(0, pointA, pointB, signArr, pathArr);
+    return { pathNum: signArr, pathIds: [] };
 };
-var calcArrayNums = function (pointA, pointB, arr, arrIds) {
-    // console.log(counter);
+var calcArrayNums = function (recursionCounter, pointA, pointB, arr, arrIds) {
     if (pointA.y < pointB.y)
         for (var i = 0; i < 9; i++)
             if (pointA.x < pointB.x)
@@ -909,13 +928,34 @@ var calcArrayNums = function (pointA, pointB, arr, arrIds) {
             else
                 for (var j = 8; j >= 0; j--)
                     createPathNums({ i: i, j: j }, arr, arrIds);
-    if (arrIds[pointB.y][pointB.x].length == 0)
-        calcArrayNums(pointA, pointB, arr, arrIds);
     for (var i = 1; i < pathArr[pointB.y][pointB.x].length; i++)
         if (pathArr[pointB.y][pointB.x][0] == pathArr[pointB.y][pointB.x][i]) {
             pathArr[pointB.y][pointB.x] = pathArr[pointB.y][pointB.x].slice(0, i + 1);
             break;
         }
+    try {
+        if (arrIds[pointB.y][pointB.x].length == 0)
+            try {
+                if (recursionCounter < 15) {
+                    console.log("recursion lvl: ", recursionCounter);
+                    recursionCounter++;
+                    calcArrayNums(recursionCounter, pointA, pointB, arr, arrIds);
+                }
+                else {
+                    var newPathArrays_1 = {
+                        pathNum: arr,
+                        pathIds: arrIds[pointB.y][pointB.x]
+                    };
+                    return newPathArrays_1;
+                }
+            }
+            catch (err) {
+                console.log(err);
+            }
+    }
+    catch (err) {
+        console.log(err);
+    }
     var newPathArrays = {
         pathNum: arr,
         pathIds: arrIds[pointB.y][pointB.x]
@@ -929,6 +969,36 @@ var createPathNums = function (index, arr, arrIds) {
     else if (arr[index.i][index.j] > 0)
         assignValues(arr[index.i][index.j] + 1, { i: index.i, j: index.j }, arr, arrIds);
     // if (controlM) break;
+};
+var isAvailable = function (point, arr) {
+    var isAvail = 0;
+    isAvail += isColorNext(point, { x: 1, y: 0 }, arr);
+    isAvail += isColorNext(point, { x: -1, y: 0 }, arr);
+    isAvail += isColorNext(point, { x: 0, y: -1 }, arr);
+    isAvail += isColorNext(point, { x: 0, y: 1 }, arr);
+    if (isAvail == 4)
+        return false;
+    return true;
+};
+var isColorNext = function (point, shift, arr) {
+    // console.log(point.y - shift.y, point.x - shift.x);
+    // console.log(arr[point.y - shift.y][point.x - shift.x]);
+    try {
+        if (arr[point.y - shift.y][point.x - shift.x] == "C" ||
+            arr[point.y - shift.y][point.x - shift.x] == "O" ||
+            arr[point.y - shift.y][point.x - shift.x] == "I" ||
+            arr[point.y - shift.y][point.x - shift.x] == "S" ||
+            arr[point.y - shift.y][point.x - shift.x] == "M" ||
+            arr[point.y - shift.y][point.x - shift.x] == "G" ||
+            arr[point.y - shift.y][point.x - shift.x] == "D" ||
+            arr[point.y - shift.y][point.x - shift.x] == undefined)
+            return 1;
+    }
+    catch (err) {
+        // console.log(err);
+        return 1;
+    }
+    return 0;
 };
 var assignValues = function (val, index, arr, arrIds) {
     assignNewValue(val, index, arr, arrIds, { i: 1, j: 0 });
@@ -977,17 +1047,6 @@ var Settings = /** @class */ (function () {
     Settings.boardSize = 9;
     Settings.indexNum = 0;
     Settings.tilesList = [];
-    Settings.tilesFields = [
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0]
-    ];
     Settings.ballArr = [];
     Settings.balls = [];
     return Settings;

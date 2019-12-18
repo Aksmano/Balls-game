@@ -39,14 +39,15 @@ export default class Game {
             { x: x, y: y }
           );
           let endIndex = calcTileIndex(`${x}_${y}`);
+          Settings.tilesList[parseInt(endIndex)].isBall = true
           let tile = document.getElementById(`${x}_${y}-${endIndex}`);
           tile.appendChild(Settings.balls[y][x].render());
           break;
           //   this.
         }
       }
-      console.log(Settings.balls);
-      console.log(Settings.ballArr);
+    //   console.log(Settings.balls);
+    //   console.log(Settings.ballArr);
     }
   }
 }

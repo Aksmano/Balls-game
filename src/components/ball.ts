@@ -14,7 +14,7 @@ export default class Ball {
   render() {
     const ball = document.createElement("div");
     ball.className = "ball";
-    ball.id = `${this.point.y}_${this.point.x}`
+    ball.id = `${this.point.x}_${this.point.y}`
     ball.style.backgroundColor = this.color;
     // ball.style.transition = "background 0.4s ease-in-out";
     return ball;

@@ -18,7 +18,6 @@
   display: flex;
   width: 500px;
   height: 500px;
-  flex: 9;
   flex-direction: column;
   /* border: 1px solid black; */
 }
@@ -42,14 +41,18 @@
   flex: 1;
   border: 5px solid white;
   margin: 12%;
-  animation: border-unhover 0.5s ease-in-out;
+  /* animation: border-unhover 0.5s ease-in-out; */
 }
 
 .ball:hover {
-  animation: border-hover 0.5s ease-in-out;
+  /* animation: border-hover 0.5s ease-in-out; */
   border: none;
   cursor: pointer;
 }
+
+/* .ball:active {
+    border: none;
+} */
 
 @keyframes slide-up {
   0% {
