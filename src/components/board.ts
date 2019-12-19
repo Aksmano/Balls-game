@@ -28,15 +28,42 @@ export default class Board {
     };
 
     this.endPath = (e: Event) => {
+      console.log(":ooooo");
+
       for (let i = 0; i < 9; i++) {
         let row = document.body.children[1].firstElementChild.children[i];
         for (let j = 0; j < 9; j++)
           (<HTMLDivElement>row.children[j]).style.backgroundColor =
             "rgb(60, 60, 60)";
       }
+      if (
+        (<HTMLDivElement>e.target).id == Settings.clickedBallHTML.id.slice(0, 3)
+      ) {
+        console.log("ddddd");
 
-      if (this.path.pathIds.length > 0) {
-        if ((<HTMLDivElement>e.target).className == "ball") {
+        this.ballClick();
+        this.boardDiv.removeEventListener("mousemove", this.drawPath);
+        this.boardDiv.removeEventListener("click", this.endPath);
+        this.boardDiv.addEventListener("click", this.startPath);
+        Settings.isPathStarted = false;
+      } else if (
+        (this.path.pathIds.length > 0 &&
+          (<HTMLDivElement>e.target).children.length == 0) ||
+        (<HTMLDivElement>e.target).className == "ball"
+      ) {
+        console.log((<HTMLDivElement>e.target).children.length);
+
+        if (
+          (<HTMLDivElement>e.target).className == "ball" &&
+          isAvailable(
+            {
+              x: parseInt((<HTMLDivElement>e.target).id.slice(0, 1)),
+              y: parseInt((<HTMLDivElement>e.target).id.slice(2, 3))
+            },
+            Settings.ballArr
+          ) == true
+        ) {
+          console.log("here");
           this.ballClick();
           let indexA = (<HTMLDivElement>e.target).parentElement.id.slice(4, 6);
           Settings.clickedBallHTML = <HTMLDivElement>e.target;
@@ -48,7 +75,8 @@ export default class Board {
         } else if (
           (<HTMLDivElement>e.target).className == "tile" &&
           (<HTMLDivElement>e.target).id !=
-            Settings.clickedBallHTML.id.slice(0, 3)
+            Settings.clickedBallHTML.id.slice(0, 3) &&
+          (<HTMLDivElement>e.target).children.length == 0
         ) {
           (<HTMLDivElement>e.target).appendChild(Settings.clickedBallHTML);
           console.log(<HTMLDivElement>e.target);
@@ -69,22 +97,27 @@ export default class Board {
           this.boardDiv.removeEventListener("click", this.endPath);
           this.boardDiv.addEventListener("click", this.startPath);
           Settings.isPathStarted = false;
-        } else if (
-          (<HTMLDivElement>e.target).id ==
-          Settings.clickedBallHTML.id.slice(0, 3)
-        ) {
-          this.ballClick();
-          this.boardDiv.removeEventListener("mousemove", this.drawPath);
-          this.boardDiv.removeEventListener("click", this.endPath);
-          this.boardDiv.addEventListener("click", this.startPath);
-          Settings.isPathStarted = false;
         }
-      } else
+      } else if (
+        (<HTMLDivElement>e.target).className != "ball" &&
+        (<HTMLDivElement>e.target).children.length == 0
+      )
         (<HTMLDivElement>e.target).style.backgroundColor = "rgb(255, 0, 0)";
     };
 
     this.startPath = (e: Event) => {
-      if ((<HTMLDivElement>e.target).className == "ball") {
+      if (
+        (<HTMLDivElement>e.target).className == "ball" &&
+        isAvailable(
+          {
+            x: parseInt((<HTMLDivElement>e.target).id.slice(0, 1)),
+            y: parseInt((<HTMLDivElement>e.target).id.slice(2, 3))
+          },
+          Settings.ballArr
+        ) == true
+      ) {
+        console.log("sssss");
+
         let indexA = (<HTMLDivElement>e.target).parentElement.id.slice(4, 6);
         Settings.clickedBallHTML = <HTMLDivElement>e.target;
         Settings.firstTile = Settings.tilesList[parseInt(indexA)];
@@ -116,7 +149,9 @@ export default class Board {
       if (
         (<HTMLDivElement>e.target).className == "ball" ||
         (<HTMLDivElement>e.target).id == Settings.clickedBallHTML.id ||
-        (<HTMLDivElement>e.target).id.slice(0, 3) == Settings.clickedBallHTML.id
+        (<HTMLDivElement>e.target).id.slice(0, 3) ==
+          Settings.clickedBallHTML.id ||
+        (<HTMLDivElement>e.target).children.length > 0
       ) {
         console.log("dupadupadupa");
         console.log((<HTMLDivElement>e.target).id);

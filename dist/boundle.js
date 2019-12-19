@@ -636,14 +636,31 @@ var Board = /** @class */ (function () {
             console.log("CHUUUUJ");
         };
         this.endPath = function (e) {
+            console.log(":ooooo");
             for (var i = 0; i < 9; i++) {
                 var row = document.body.children[1].firstElementChild.children[i];
                 for (var j = 0; j < 9; j++)
                     row.children[j].style.backgroundColor =
                         "rgb(60, 60, 60)";
             }
-            if (_this.path.pathIds.length > 0) {
-                if (e.target.className == "ball") {
+            if (e.target.id == _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id.slice(0, 3)) {
+                console.log("ddddd");
+                _this.ballClick();
+                _this.boardDiv.removeEventListener("mousemove", _this.drawPath);
+                _this.boardDiv.removeEventListener("click", _this.endPath);
+                _this.boardDiv.addEventListener("click", _this.startPath);
+                _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = false;
+            }
+            else if ((_this.path.pathIds.length > 0 &&
+                e.target.children.length == 0) ||
+                e.target.className == "ball") {
+                console.log(e.target.children.length);
+                if (e.target.className == "ball" &&
+                    Object(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_1__["isAvailable"])({
+                        x: parseInt(e.target.id.slice(0, 1)),
+                        y: parseInt(e.target.id.slice(2, 3))
+                    }, _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].ballArr) == true) {
+                    console.log("here");
                     _this.ballClick();
                     var indexA = e.target.parentElement.id.slice(4, 6);
                     _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML = e.target;
@@ -655,7 +672,8 @@ var Board = /** @class */ (function () {
                 }
                 else if (e.target.className == "tile" &&
                     e.target.id !=
-                        _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id.slice(0, 3)) {
+                        _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id.slice(0, 3) &&
+                    e.target.children.length == 0) {
                     e.target.appendChild(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML);
                     console.log(e.target);
                     console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML);
@@ -674,20 +692,18 @@ var Board = /** @class */ (function () {
                     _this.boardDiv.addEventListener("click", _this.startPath);
                     _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = false;
                 }
-                else if (e.target.id ==
-                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id.slice(0, 3)) {
-                    _this.ballClick();
-                    _this.boardDiv.removeEventListener("mousemove", _this.drawPath);
-                    _this.boardDiv.removeEventListener("click", _this.endPath);
-                    _this.boardDiv.addEventListener("click", _this.startPath);
-                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = false;
-                }
             }
-            else
+            else if (e.target.className != "ball" &&
+                e.target.children.length == 0)
                 e.target.style.backgroundColor = "rgb(255, 0, 0)";
         };
         this.startPath = function (e) {
-            if (e.target.className == "ball") {
+            if (e.target.className == "ball" &&
+                Object(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_1__["isAvailable"])({
+                    x: parseInt(e.target.id.slice(0, 1)),
+                    y: parseInt(e.target.id.slice(2, 3))
+                }, _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].ballArr) == true) {
+                console.log("sssss");
                 var indexA = e.target.parentElement.id.slice(4, 6);
                 _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML = e.target;
                 _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile = _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].tilesList[parseInt(indexA)];
@@ -714,7 +730,9 @@ var Board = /** @class */ (function () {
             console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id);
             if (e.target.className == "ball" ||
                 e.target.id == _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id ||
-                e.target.id.slice(0, 3) == _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id) {
+                e.target.id.slice(0, 3) ==
+                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id ||
+                e.target.children.length > 0) {
                 console.log("dupadupadupa");
                 console.log(e.target.id);
                 console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id);
