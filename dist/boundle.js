@@ -97,7 +97,7 @@
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = module.exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "/* body {\r\n  margin: 0 auto;\r\n  padding: 0;\r\n} */\r\n\r\n#main {\r\n  /* width: 100vw;\r\n  height: 100vh; */\r\n  /* margin: 0 auto; */\r\n  /* padding: 0; */\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#container {\r\n  display: flex;\r\n  width: 500px;\r\n  height: 500px;\r\n  flex-direction: column;\r\n  /* border: 1px solid black; */\r\n}\r\n\r\n.row {\r\n  display: flex;\r\n  flex: 1;\r\n}\r\n\r\n.tile {\r\n  display: flex;\r\n  flex: 1;\r\n  box-sizing: border-box;\r\n  border: 1px solid white;\r\n  background-color: rgb(60, 60, 60);\r\n}\r\n\r\n.ball {\r\n  border-radius: 50%;\r\n  display: flex;\r\n  flex: 1;\r\n  border: 5px solid white;\r\n  margin: 12%;\r\n  /* animation: border-unhover 0.5s ease-in-out; */\r\n}\r\n\r\n.ball:hover {\r\n  /* animation: border-hover 0.5s ease-in-out; */\r\n  border: none;\r\n  cursor: pointer;\r\n}\r\n\r\n/* .ball:active {\r\n    border: none;\r\n} */\r\n\r\n@keyframes slide-up {\r\n  0% {\r\n    opacity: 0;\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n  }\r\n}\r\n\r\n@keyframes border-hover {\r\n  0% {\r\n    border: 5px solid white;\r\n  }\r\n  100% {\r\n    border: none;\r\n  }\r\n}\r\n\r\n@keyframes border-unhover {\r\n  0% {\r\n    border: none;\r\n  }\r\n  100% {\r\n    border: 5px solid white;\r\n  }\r\n}\r\n", ""]);
+exports.push([module.i, "/* body {\r\n  margin: 0 auto;\r\n  padding: 0;\r\n} */\r\n\r\n#main {\r\n  /* width: 100vw;\r\n  height: 100vh; */\r\n  /* margin: 0 auto; */\r\n  /* padding: 0; */\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#container {\r\n  display: flex;\r\n  width: 500px;\r\n  height: 500px;\r\n  flex-direction: column;\r\n  /* border: 1px solid black; */\r\n}\r\n\r\n.row {\r\n  display: flex;\r\n  flex: 1;\r\n}\r\n\r\n.tile {\r\n  display: flex;\r\n  flex: 1;\r\n  box-sizing: border-box;\r\n  border: 1px solid white;\r\n  background-color: rgb(60, 60, 60);\r\n}\r\n\r\n.ball {\r\n  border-radius: 50%;\r\n  display: flex;\r\n  flex: 1;\r\n  border: 5px solid white;\r\n  margin: 12%;\r\n  /* animation: border-unhover 0.5s ease-in-out; */\r\n}\r\n\r\n.ballPrev {\r\n  border-radius: 50%;\r\n  display: flex;\r\n  flex: 1;\r\n  /* display: inline-block;\r\n  width: 50px;\r\n  height: 50px; */\r\n  /* box-sizing: border-box; */\r\n  border: 5px solid white;\r\n  margin: 5px;\r\n}\r\n\r\n.prev {\r\n  margin: 20px;\r\n  padding: 10px;\r\n  display: flex;\r\n  width: 270px;\r\n  height: 50px;\r\n  background-color: rgb(60, 60, 60);\r\n  border-radius: 5px;\r\n  /* justify-content: center; */\r\n  /* align-items: center; */\r\n}\r\n\r\n.next {\r\n  font-family: Verdana, Geneva, Tahoma, sans-serif;\r\n  align-self: center;\r\n  text-align: center;\r\n  font-size: 22px;\r\n  color: white;\r\n  display: block;\r\n  width: 120px;\r\n}\r\n\r\n.ball:hover {\r\n  /* animation: border-hover 0.5s ease-in-out; */\r\n  /* border: none; */\r\n  cursor: pointer;\r\n}\r\n\r\n/* .ball:active {\r\n    border: none;\r\n} */\r\n\r\n@keyframes slide-up {\r\n  0% {\r\n    opacity: 0;\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n  }\r\n}\r\n\r\n@keyframes border-hover {\r\n  0% {\r\n    border: 5px solid white;\r\n  }\r\n  100% {\r\n    border: none;\r\n  }\r\n}\r\n\r\n@keyframes border-unhover {\r\n  0% {\r\n    border: none;\r\n  }\r\n  100% {\r\n    border: 5px solid white;\r\n  }\r\n}\r\n", ""]);
 
 
 /***/ }),
@@ -521,6 +521,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_ball__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/ball */ "./src/components/ball.ts");
 /* harmony import */ var _components_board__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/board */ "./src/components/board.ts");
 /* harmony import */ var _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../settings/static-settings */ "./src/settings/static-settings.ts");
+/* harmony import */ var _components_preview__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/preview */ "./src/components/preview.ts");
+
 
 
 
@@ -529,7 +531,8 @@ var Game = /** @class */ (function () {
     //   private ballArr: Array<Array<number | string>> = [];
     //   private balls: Array<Array<Ball>> = [];
     function Game() {
-        this.BoardClass = new _components_board__WEBPACK_IMPORTED_MODULE_2__["default"]();
+        this.nextColors = ["", "", ""];
+        this.BoardClass = new _components_board__WEBPACK_IMPORTED_MODULE_2__["default"](this);
         this.BoardClass.render();
         this.board = document.getElementById("container");
         for (var i = 0; i < 9; i++) {
@@ -542,19 +545,29 @@ var Game = /** @class */ (function () {
             for (var j = 0; j < 9; j++)
                 _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].balls[i].push(null);
         }
+        this.drawColors();
+        this.preview = new _components_preview__WEBPACK_IMPORTED_MODULE_4__["default"](this.nextColors);
         this.drawBalls();
     }
-    Game.prototype.drawBalls = function () {
-        for (var i = 0; i < 18; i++) {
+    Game.prototype.drawColors = function () {
+        for (var i = 0; i < 3; i++) {
             var colorIndex = Math.round(Math.random() * 7);
             colorIndex > 6 ? colorIndex-- : null;
+            this.nextColors[i] = _settings_game_funcs__WEBPACK_IMPORTED_MODULE_0__["ColorsArr"][colorIndex];
             console.log(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_0__["ColorsArr"][colorIndex]);
+        }
+    };
+    Game.prototype.drawBalls = function () {
+        for (var i = 0; i < 3; i++) {
             while (true) {
                 var x = Math.floor(Math.random() * 9);
                 var y = Math.floor(Math.random() * 9);
                 if (_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[y][x] == 0) {
-                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[y][x] = _settings_game_funcs__WEBPACK_IMPORTED_MODULE_0__["ColorsArr"][colorIndex][0].toUpperCase();
-                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].balls[y][x] = new _components_ball__WEBPACK_IMPORTED_MODULE_1__["default"](_settings_game_funcs__WEBPACK_IMPORTED_MODULE_0__["ColorsArr"][colorIndex], _settings_game_funcs__WEBPACK_IMPORTED_MODULE_0__["ColorsArr"][colorIndex][0].toUpperCase(), { x: x, y: y });
+                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[y][x] = this.nextColors[i][0].toUpperCase();
+                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].balls[y][x] = new _components_ball__WEBPACK_IMPORTED_MODULE_1__["default"](this.nextColors[i], {
+                        x: x,
+                        y: y
+                    });
                     var endIndex = Object(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_0__["calcTileIndex"])(x + "_" + y);
                     _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].tilesList[parseInt(endIndex)].isBall = true;
                     var tile = document.getElementById(x + "_" + y + "-" + endIndex);
@@ -566,7 +579,16 @@ var Game = /** @class */ (function () {
             //   console.log(Settings.balls);
             //   console.log(Settings.ballArr);
         }
-        // console.log(Settings.ballArr);
+        this.drawColors();
+        this.preview.setBallColors(this.nextColors);
+    };
+    Game.prototype.checkBalls = function () {
+    };
+    Game.prototype.checkBallsVert = function () {
+    };
+    Game.prototype.checkBallsHoriz = function () {
+    };
+    Game.prototype.checkBallsCross = function () {
     };
     return Game;
 }());
@@ -588,18 +610,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_board_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_board_css__WEBPACK_IMPORTED_MODULE_0__);
 
 var Ball = /** @class */ (function () {
-    function Ball(color, colorId, position) {
-        this.color = color;
-        this.idColor = colorId;
-        this.point = position;
+    function Ball(color, position) {
+        this.ball = document.createElement("div");
+        this._color = color;
+        this.idColor = color[0].toUpperCase();
+        if (position)
+            this.point = position;
     }
+    Object.defineProperty(Ball.prototype, "color", {
+        get: function () {
+            return this._color;
+        },
+        set: function (newColor) {
+            this.ball.style.backgroundColor = newColor;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Ball.prototype.render = function () {
-        var ball = document.createElement("div");
-        ball.className = "ball";
-        ball.id = this.point.x + "_" + this.point.y;
-        ball.style.backgroundColor = this.color;
+        this.ball = document.createElement("div");
+        this.ball.className = "ball";
+        if (this.point)
+            this.ball.id = this.point.x + "_" + this.point.y;
+        this.ball.style.backgroundColor = this._color;
         // ball.style.transition = "background 0.4s ease-in-out";
-        return ball;
+        return this.ball;
+    };
+    Ball.prototype.renderPrev = function () {
+        this.ball = document.createElement("div");
+        this.ball.className = "ballPrev";
+        if (this.point)
+            this.ball.id = this.point.x + "_" + this.point.y;
+        this.ball.style.backgroundColor = this._color;
+        // ball.style.transition = "background 0.4s ease-in-out";
+        return this.ball;
     };
     return Ball;
 }());
@@ -627,16 +671,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Board = /** @class */ (function () {
-    function Board() {
+    function Board(game) {
         var _this = this;
+        this._game = game;
         this.boardDiv = document.createElement("div");
         this.ballClick = function (e) {
             _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.removeEventListener("click", _this.ballClick);
             _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.style.border = "5px solid white";
-            console.log("CHUUUUJ");
         };
         this.endPath = function (e) {
-            console.log(":ooooo");
+            console.log("endPath");
             for (var i = 0; i < 9; i++) {
                 var row = document.body.children[1].firstElementChild.children[i];
                 for (var j = 0; j < 9; j++)
@@ -644,58 +688,25 @@ var Board = /** @class */ (function () {
                         "rgb(60, 60, 60)";
             }
             if (e.target.id == _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id.slice(0, 3)) {
-                console.log("ddddd");
-                _this.ballClick();
-                _this.boardDiv.removeEventListener("mousemove", _this.drawPath);
-                _this.boardDiv.removeEventListener("click", _this.endPath);
-                _this.boardDiv.addEventListener("click", _this.startPath);
-                _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = false;
+                _this.deselectBall(e);
             }
             else if ((_this.path.pathIds.length > 0 &&
                 e.target.children.length == 0) ||
-                e.target.className == "ball") {
-                console.log(e.target.children.length);
+                e.target.className == "ball")
                 if (e.target.className == "ball" &&
                     Object(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_1__["isAvailable"])({
                         x: parseInt(e.target.id.slice(0, 1)),
                         y: parseInt(e.target.id.slice(2, 3))
-                    }, _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].ballArr) == true) {
-                    console.log("here");
-                    _this.ballClick();
-                    var indexA = e.target.parentElement.id.slice(4, 6);
-                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML = e.target;
-                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile = _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].tilesList[parseInt(indexA)];
-                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.style.border = "5px solid white";
-                    e.target.style.border = "none";
-                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = true;
-                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallColor = _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.style.backgroundColor[0].toUpperCase();
-                }
+                    }, _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].ballArr) == true)
+                    _this.changeBall(e);
                 else if (e.target.className == "tile" &&
                     e.target.id !=
                         _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id.slice(0, 3) &&
-                    e.target.children.length == 0) {
-                    e.target.appendChild(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML);
-                    console.log(e.target);
-                    console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML);
-                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].ballArr = _this.path.pathNum;
-                    _this.path.pathNum[_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile.y][_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile.x] = 0;
-                    _this.path.pathNum[_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile.y][_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile.x] =
-                        _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallColor;
-                    console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].ballArr);
-                    for (var i = 0; i < 9; i++)
-                        for (var j = 0; j < 9; j++)
-                            if (_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].ballArr[i][j] > 0)
-                                _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].ballArr[i][j] = 0;
-                    _this.ballClick();
-                    _this.boardDiv.removeEventListener("mousemove", _this.drawPath);
-                    _this.boardDiv.removeEventListener("click", _this.endPath);
-                    _this.boardDiv.addEventListener("click", _this.startPath);
-                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = false;
-                }
-            }
-            else if (e.target.className != "ball" &&
-                e.target.children.length == 0)
-                e.target.style.backgroundColor = "rgb(255, 0, 0)";
+                    e.target.children.length == 0)
+                    _this.moveBall(e);
+                else if (e.target.className != "ball" &&
+                    e.target.children.length == 0)
+                    e.target.style.backgroundColor = "rgb(255, 0, 0)";
         };
         this.startPath = function (e) {
             if (e.target.className == "ball" &&
@@ -703,16 +714,13 @@ var Board = /** @class */ (function () {
                     x: parseInt(e.target.id.slice(0, 1)),
                     y: parseInt(e.target.id.slice(2, 3))
                 }, _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].ballArr) == true) {
-                console.log("sssss");
+                console.log("startPath");
                 var indexA = e.target.parentElement.id.slice(4, 6);
                 _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML = e.target;
                 _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile = _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].tilesList[parseInt(indexA)];
-                // (<HTMLDivElement>e.target).parentElement.style.backgroundColor =
-                //   "rgb(140, 140, 140)";
                 e.target.style.border = "none";
                 _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = true;
                 _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallColor = _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.style.backgroundColor[0].toUpperCase();
-                // console.log(Settings.clickedBallHTML.style.backgroundColor[0].toUpperCase());
                 _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.addEventListener("click", _this.ballClick);
                 _this.boardDiv.removeEventListener("click", _this.startPath);
                 _this.boardDiv.addEventListener("mousemove", _this.drawPath);
@@ -726,41 +734,94 @@ var Board = /** @class */ (function () {
                     row.children[j].style.backgroundColor =
                         "rgb(60, 60, 60)";
             }
-            console.log(e.target.id.slice(0, 3));
-            console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id);
             if (e.target.className == "ball" ||
                 e.target.id == _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id ||
                 e.target.id.slice(0, 3) ==
                     _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id ||
-                e.target.children.length > 0) {
-                console.log("dupadupadupa");
-                console.log(e.target.id);
-                console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id);
-            }
-            else {
-                var indexB = e.target.id.slice(4, 6);
-                _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile = _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].tilesList[parseInt(indexB)];
-                _this.path = Object(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_1__["calcPath"])({ x: _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile.x, y: _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile.y }, { x: _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile.x, y: _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile.y });
-                for (var i = 1; i < _this.path.pathIds.length; i++)
-                    if (_this.path.pathIds[0] == _this.path.pathIds[i]) {
-                        _this.path.pathIds = _this.path.pathIds.slice(0, i);
-                        break;
-                    }
-                for (var i = 0; i < _this.path.pathIds.length; i++) {
-                    var end = Object(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_1__["calcTileIndex"])(_this.path.pathIds[i]);
-                    console.log(end);
-                    var div = document.getElementById(_this.path.pathIds[i] + ("-" + end));
-                    div.style.backgroundColor = "rgb(140, 140, 140)";
-                }
-                if (_this.path.pathIds.length == 0 &&
-                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile != _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile)
-                    e.target.style.backgroundColor = "rgb(255, 0, 0)";
-                else
-                    e.target.style.backgroundColor =
-                        "rgb(140, 140, 140)";
-            }
+                e.target.children.length > 0)
+                console.log("Nie masz tu swojej jurysdykcji Panie");
+            else
+                _this.drawAvailPath(e);
         };
     }
+    Board.prototype.drawAvailPath = function (e) {
+        var indexB = e.target.id.slice(4, 6);
+        _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile = _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].tilesList[parseInt(indexB)];
+        this.path = Object(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_1__["calcPath"])({ x: _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile.x, y: _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile.y }, { x: _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile.x, y: _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile.y });
+        for (var i = 1; i < this.path.pathIds.length; i++)
+            if (this.path.pathIds[0] == this.path.pathIds[i]) {
+                this.path.pathIds = this.path.pathIds.slice(0, i);
+                break;
+            }
+        for (var i = 0; i < this.path.pathIds.length; i++) {
+            var end = Object(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_1__["calcTileIndex"])(this.path.pathIds[i]);
+            console.log(end);
+            var div = document.getElementById(this.path.pathIds[i] + ("-" + end));
+            div.style.backgroundColor = "rgb(140, 140, 140)";
+        }
+        if (this.path.pathIds.length == 0 &&
+            _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile != _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile)
+            e.target.style.backgroundColor = "rgb(255, 0, 0)";
+        else
+            e.target.style.backgroundColor = "rgb(140, 140, 140)";
+    };
+    Board.prototype.deselectBall = function (e) {
+        console.log("deselectBall");
+        this.ballClick();
+        this.boardDiv.removeEventListener("mousemove", this.drawPath);
+        this.boardDiv.removeEventListener("click", this.endPath);
+        this.boardDiv.addEventListener("click", this.startPath);
+        _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = false;
+    };
+    Board.prototype.changeBall = function (e) {
+        console.log("changeBall");
+        this.ballClick();
+        var indexA = e.target.parentElement.id.slice(4, 6);
+        _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML = e.target;
+        _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile = _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].tilesList[parseInt(indexA)];
+        _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.style.border = "5px solid white";
+        e.target.style.border = "none";
+        _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = true;
+        _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallColor = _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.style.backgroundColor[0].toUpperCase();
+    };
+    Board.prototype.moveBall = function (e) {
+        var _this = this;
+        console.log("moveBall");
+        console.log(e.target);
+        console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML);
+        e.target.appendChild(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML);
+        _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallHTML.id = e.target.id[0] + "_" + e.target.id[2];
+        for (var i = 0; i < this.path.pathIds.length; i++) {
+            var end = Object(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_1__["calcTileIndex"])(this.path.pathIds[i]);
+            console.log(end);
+            var div = document.getElementById(this.path.pathIds[i] + ("-" + end));
+            div.style.backgroundColor = "rgb(200, 200, 200)";
+        }
+        e.target.style.backgroundColor = "rgb(200, 200, 200)";
+        _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].ballArr = this.path.pathNum;
+        this.path.pathNum[_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile.y][_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].firstTile.x] = 0;
+        this.path.pathNum[_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile.y][_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].lastTile.x] =
+            _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].clickedBallColor;
+        console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].ballArr);
+        for (var i = 0; i < 9; i++)
+            for (var j = 0; j < 9; j++)
+                if (_settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].ballArr[i][j] > 0)
+                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].ballArr[i][j] = 0;
+        this.ballClick();
+        this.boardDiv.removeEventListener("mousemove", this.drawPath);
+        this.boardDiv.removeEventListener("click", this.endPath);
+        setTimeout(function () {
+            for (var i = 0; i < 9; i++) {
+                var row = document.body.children[1].firstElementChild.children[i];
+                for (var j = 0; j < 9; j++)
+                    row.children[j].style.backgroundColor =
+                        "rgb(60, 60, 60)";
+            }
+            _this.boardDiv.addEventListener("click", _this.startPath);
+            _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = false;
+            _this._game.drawBalls();
+        }, 500);
+    };
     Board.prototype.render = function () {
         this.boardDiv.id = "container";
         for (var i = 0; i < _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].boardSize; i++) {
@@ -777,6 +838,48 @@ var Board = /** @class */ (function () {
     return Board;
 }());
 /* harmony default export */ __webpack_exports__["default"] = (Board);
+
+
+/***/ }),
+
+/***/ "./src/components/preview.ts":
+/*!***********************************!*\
+  !*** ./src/components/preview.ts ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ball__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ball */ "./src/components/ball.ts");
+
+var Preview = /** @class */ (function () {
+    //   private _ballColor: Array<string>;
+    function Preview(ballColors) {
+        this.balls = [];
+        for (var i = 0; i < 3; i++) {
+            this.balls.push(new _ball__WEBPACK_IMPORTED_MODULE_0__["default"](ballColors[i]));
+            //   this._ballColor.push(ballColors[i]);
+        }
+        this.render();
+    }
+    Preview.prototype.setBallColors = function (colors) {
+        for (var i = 0; i < colors.length; i++) {
+            this.balls[i].color = colors[i];
+        }
+    };
+    Preview.prototype.render = function () {
+        var prev = document.createElement("div");
+        prev.className = "prev";
+        prev.innerHTML = "<p class='next'>Następne:</p>";
+        for (var i = 0; i < 3; i++) {
+            prev.appendChild(this.balls[i].renderPrev());
+        }
+        document.body.children[1].appendChild(prev);
+    };
+    return Preview;
+}());
+/* harmony default export */ __webpack_exports__["default"] = (Preview);
 
 
 /***/ }),
@@ -1052,7 +1155,7 @@ var isColorNext = function (point, shift, arr) {
             return 1;
     }
     catch (err) {
-        // console.log(err);
+        console.log(err);
         return 1;
     }
     return 0;

@@ -5,11 +5,11 @@
 */
 
 import Board from "./components/board";
-import Game from "./bin/game"
-import './css/board.css';
+import Game from "./bin/game";
+import "./css/board.css";
+import Preview from "./components/preview";
 
 // const main = document.createElement("div");
 // main.id = "main";
 
-const game = new Game()
-
+const game = new Game();

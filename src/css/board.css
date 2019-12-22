@@ -44,9 +44,43 @@
   /* animation: border-unhover 0.5s ease-in-out; */
 }
 
+.ballPrev {
+  border-radius: 50%;
+  display: flex;
+  flex: 1;
+  /* display: inline-block;
+  width: 50px;
+  height: 50px; */
+  /* box-sizing: border-box; */
+  border: 5px solid white;
+  margin: 5px;
+}
+
+.prev {
+  margin: 20px;
+  padding: 10px;
+  display: flex;
+  width: 270px;
+  height: 50px;
+  background-color: rgb(60, 60, 60);
+  border-radius: 5px;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.next {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  align-self: center;
+  text-align: center;
+  font-size: 22px;
+  color: white;
+  display: block;
+  width: 120px;
+}
+
 .ball:hover {
   /* animation: border-hover 0.5s ease-in-out; */
-  border: none;
+  /* border: none; */
   cursor: pointer;
 }
 

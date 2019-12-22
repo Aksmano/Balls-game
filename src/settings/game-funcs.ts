@@ -196,7 +196,7 @@ const isColorNext = (
     )
       return 1;
   } catch (err) {
-    // console.log(err);
+    console.log(err);
     return 1;
   }
   return 0;
