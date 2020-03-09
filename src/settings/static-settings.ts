@@ -14,4 +14,5 @@ export default class Settings {
   public static clickedBall: Ball;
   public static clickedBallHTML: HTMLElement;
   public static clickedBallColor: string;
+  public static scorePoints: number = 0
 }

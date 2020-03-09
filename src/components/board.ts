@@ -31,6 +31,7 @@ export default class Board {
 
     this.endPath = (e: Event) => {
       console.log("endPath");
+      console.log(this.path.pathIds);
 
       for (let i = 0; i < 9; i++) {
         let row = document.body.children[1].firstElementChild.children[i];
@@ -44,7 +45,7 @@ export default class Board {
       ) {
         this.deselectBall(e);
       } else if (
-        (this.path.pathIds.length > 0 &&
+        (this.path.pathIds.length >= 0 &&
           (<HTMLDivElement>e.target).children.length == 0) ||
         (<HTMLDivElement>e.target).className == "ball"
       )
@@ -60,17 +61,18 @@ export default class Board {
         )
           this.changeBall(e);
         else if (
+          this.path.pathIds[0] == "blockError"
+          // (<HTMLDivElement>e.target).className != "ball" &&
+          // (<HTMLDivElement>e.target).children.length != 0
+        )
+          (<HTMLDivElement>e.target).style.backgroundColor = "rgb(255, 0, 0)";
+        else if (
           (<HTMLDivElement>e.target).className == "tile" &&
           (<HTMLDivElement>e.target).id !=
             Settings.clickedBallHTML.id.slice(0, 3) &&
           (<HTMLDivElement>e.target).children.length == 0
         )
           this.moveBall(e);
-        else if (
-          (<HTMLDivElement>e.target).className != "ball" &&
-          (<HTMLDivElement>e.target).children.length == 0
-        )
-          (<HTMLDivElement>e.target).style.backgroundColor = "rgb(255, 0, 0)";
     };
 
     this.startPath = (e: Event) => {
@@ -128,26 +130,25 @@ export default class Board {
       { x: Settings.lastTile.x, y: Settings.lastTile.y }
     );
 
+    console.log(JSON.stringify(this.path.pathIds));
+
     for (let i = 1; i < this.path.pathIds.length; i++)
       if (this.path.pathIds[0] == this.path.pathIds[i]) {
         this.path.pathIds = this.path.pathIds.slice(0, i);
         break;
       }
 
-    for (let i = 0; i < this.path.pathIds.length; i++) {
-      let end = calcTileIndex(this.path.pathIds[i]);
-      console.log(end);
-      let div = document.getElementById(this.path.pathIds[i] + `-${end}`);
-      div.style.backgroundColor = "rgb(140, 140, 140)";
-    }
-
-    if (
-      this.path.pathIds.length == 0 &&
-      Settings.firstTile != Settings.lastTile
-    )
+    if (this.path.pathIds[0] == "blockError")
       (<HTMLDivElement>e.target).style.backgroundColor = "rgb(255, 0, 0)";
-    else
+    else {
       (<HTMLDivElement>e.target).style.backgroundColor = "rgb(140, 140, 140)";
+      for (let i = 0; i < this.path.pathIds.length; i++) {
+        let end = calcTileIndex(this.path.pathIds[i]);
+        console.log(end);
+        let div = document.getElementById(this.path.pathIds[i] + `-${end}`);
+        div.style.backgroundColor = "rgb(140, 140, 140)";
+      }
+    }
   }
 
   deselectBall(e: Event) {
@@ -210,6 +211,7 @@ export default class Board {
       }
       this.boardDiv.addEventListener("click", this.startPath);
       Settings.isPathStarted = false;
+      this._game.checkBallsCross();
       this._game.drawBalls();
     }, 500);
   }

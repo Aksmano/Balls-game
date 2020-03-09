@@ -44,6 +44,7 @@ export enum Colors {
 export var signArr: Array<Array<any>> = [];
 export var pathArr: Array<Array<Array<string>>> = [];
 export var controlM: boolean = false;
+var recursionControl: number = 0;
 
 export const findCoefficients = (pointA: Point, pointB: Point): Coefficient => {
   let newCoefficient: Coefficient = { a: 0, b: 0 };
@@ -86,6 +87,7 @@ export const calcPath = (pointA: Point, pointB: Point): Path => {
   signArr[pointA.y][pointA.x] = "A";
   signArr[pointB.y][pointB.x] = "Z";
 
+  recursionControl = 0;
   if (isAvailable(pointB, signArr))
     return calcArrayNums(0, pointA, pointB, signArr, pathArr);
   return { pathNum: signArr, pathIds: [] };
@@ -127,11 +129,8 @@ const calcArrayNums = (
           recursionCounter++;
           calcArrayNums(recursionCounter, pointA, pointB, arr, arrIds);
         } else {
-          const newPathArrays: Path = {
-            pathNum: arr,
-            pathIds: arrIds[pointB.y][pointB.x]
-          };
-          return newPathArrays;
+          console.log("a tu?");
+          recursionControl = 15;
         }
       } catch (err) {
         console.log(err);
@@ -140,11 +139,21 @@ const calcArrayNums = (
     console.log(err);
   }
 
-  const newPathArrays: Path = {
-    pathNum: arr,
-    pathIds: arrIds[pointB.y][pointB.x]
-  };
-  return newPathArrays;
+  console.log("tutaj?", recursionCounter, recursionControl);
+
+  if (recursionControl == 0) {
+    const newPathArrays: Path = {
+      pathNum: arr,
+      pathIds: arrIds[pointB.y][pointB.x]
+    };
+    return newPathArrays;
+  } else {
+    const newPathArrays: Path = {
+      pathNum: arr,
+      pathIds: ["blockError"]
+    };
+    return newPathArrays;
+  }
 };
 
 const createPathNums = (
@@ -185,14 +194,8 @@ const isColorNext = (
 
   try {
     if (
-      arr[point.y - shift.y][point.x - shift.x] == "C" ||
-      arr[point.y - shift.y][point.x - shift.x] == "O" ||
-      arr[point.y - shift.y][point.x - shift.x] == "I" ||
-      arr[point.y - shift.y][point.x - shift.x] == "S" ||
-      arr[point.y - shift.y][point.x - shift.x] == "M" ||
-      arr[point.y - shift.y][point.x - shift.x] == "G" ||
-      arr[point.y - shift.y][point.x - shift.x] == "D" ||
-      arr[point.y - shift.y][point.x - shift.x] == undefined
+      arr[point.y - shift.y][point.x - shift.x] == undefined ||
+      typeof arr[point.y - shift.y][point.x - shift.x] == "string"
     )
       return 1;
   } catch (err) {
