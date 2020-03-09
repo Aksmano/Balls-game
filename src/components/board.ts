@@ -211,7 +211,7 @@ export default class Board {
       }
       this.boardDiv.addEventListener("click", this.startPath);
       Settings.isPathStarted = false;
-      this._game.checkBallsCross();
+      this._game.checkBalls();
       this._game.drawBalls();
     }, 500);
   }

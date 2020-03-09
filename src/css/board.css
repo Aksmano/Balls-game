@@ -79,6 +79,48 @@
   cursor: pointer;
 }
 
+.info {
+  width: 200px;
+  padding: 20px;
+  /* height: 120px; */
+  background-color: rgb(60, 60, 60);
+  /* border: 3px solid rgb(20, 20, 20); */
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 22px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.againButton {
+  width: 150px;
+  padding: 20px;
+  margin: 10px;
+  background-color: rgb(80, 80, 80);
+  border: 2px solid white;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 22px;
+  color: white;
+  display: flex;
+  cursor: pointer;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.againButton:hover {
+  background-color: rgb(120, 120, 120);
+}
+
+.againButton:active {
+  background-color: rgb(100, 100, 100);
+}
+
 /* .ball:active {
     border: none;
 } */

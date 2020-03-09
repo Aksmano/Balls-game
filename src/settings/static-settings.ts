@@ -14,5 +14,7 @@ export default class Settings {
   public static clickedBall: Ball;
   public static clickedBallHTML: HTMLElement;
   public static clickedBallColor: string;
-  public static scorePoints: number = 0
+  public static scorePoints: number = 0;
+  public static currLetter: string | number = "";
+  public static isMatch: Array<string> = [];
 }

@@ -97,7 +97,7 @@
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = module.exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "#main {\r\n  /* width: 100vw;\r\n  height: 100vh; */\r\n  /* margin: 0 auto; */\r\n  /* padding: 0; */\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#container {\r\n  display: flex;\r\n  width: 500px;\r\n  height: 500px;\r\n  flex-direction: column;\r\n  /* border: 1px solid black; */\r\n}\r\n\r\n.row {\r\n  display: flex;\r\n  flex: 1;\r\n}\r\n\r\n.tile {\r\n  display: flex;\r\n  flex: 1;\r\n  box-sizing: border-box;\r\n  border: 1px solid white;\r\n  background-color: rgb(60, 60, 60);\r\n}\r\n\r\n.ball {\r\n  border-radius: 50%;\r\n  display: flex;\r\n  flex: 1;\r\n  border: 5px solid white;\r\n  margin: 12%;\r\n  /* animation: border-unhover 0.5s ease-in-out; */\r\n}\r\n\r\n.ballPrev {\r\n  border-radius: 50%;\r\n  display: flex;\r\n  flex: 1;\r\n  /* display: inline-block;\r\n  width: 50px;\r\n  height: 50px; */\r\n  /* box-sizing: border-box; */\r\n  border: 5px solid white;\r\n  margin: 5px;\r\n}\r\n\r\n.prev {\r\n  margin: 20px;\r\n  padding: 10px;\r\n  display: flex;\r\n  width: 270px;\r\n  height: 50px;\r\n  background-color: rgb(60, 60, 60);\r\n  border-radius: 5px;\r\n  /* justify-content: center; */\r\n  /* align-items: center; */\r\n}\r\n\r\n.next {\r\n  font-family: Verdana, Geneva, Tahoma, sans-serif;\r\n  align-self: center;\r\n  text-align: center;\r\n  font-size: 22px;\r\n  color: white;\r\n  display: block;\r\n  width: 120px;\r\n}\r\n\r\n.ball:hover {\r\n  /* animation: border-hover 0.5s ease-in-out; */\r\n  /* border: none; */\r\n  cursor: pointer;\r\n}\r\n\r\n/* .ball:active {\r\n    border: none;\r\n} */\r\n\r\n@keyframes slide-up {\r\n  0% {\r\n    opacity: 0;\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n  }\r\n}\r\n\r\n@keyframes border-hover {\r\n  0% {\r\n    border: 5px solid white;\r\n  }\r\n  100% {\r\n    border: none;\r\n  }\r\n}\r\n\r\n@keyframes border-unhover {\r\n  0% {\r\n    border: none;\r\n  }\r\n  100% {\r\n    border: 5px solid white;\r\n  }\r\n}\r\n", ""]);
+exports.push([module.i, "#main {\r\n  /* width: 100vw;\r\n  height: 100vh; */\r\n  /* margin: 0 auto; */\r\n  /* padding: 0; */\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#container {\r\n  display: flex;\r\n  width: 500px;\r\n  height: 500px;\r\n  flex-direction: column;\r\n  /* border: 1px solid black; */\r\n}\r\n\r\n.row {\r\n  display: flex;\r\n  flex: 1;\r\n}\r\n\r\n.tile {\r\n  display: flex;\r\n  flex: 1;\r\n  box-sizing: border-box;\r\n  border: 1px solid white;\r\n  background-color: rgb(60, 60, 60);\r\n}\r\n\r\n.ball {\r\n  border-radius: 50%;\r\n  display: flex;\r\n  flex: 1;\r\n  border: 5px solid white;\r\n  margin: 12%;\r\n  /* animation: border-unhover 0.5s ease-in-out; */\r\n}\r\n\r\n.ballPrev {\r\n  border-radius: 50%;\r\n  display: flex;\r\n  flex: 1;\r\n  /* display: inline-block;\r\n  width: 50px;\r\n  height: 50px; */\r\n  /* box-sizing: border-box; */\r\n  border: 5px solid white;\r\n  margin: 5px;\r\n}\r\n\r\n.prev {\r\n  margin: 20px;\r\n  padding: 10px;\r\n  display: flex;\r\n  width: 270px;\r\n  height: 50px;\r\n  background-color: rgb(60, 60, 60);\r\n  border-radius: 5px;\r\n  /* justify-content: center; */\r\n  /* align-items: center; */\r\n}\r\n\r\n.next {\r\n  font-family: Verdana, Geneva, Tahoma, sans-serif;\r\n  align-self: center;\r\n  text-align: center;\r\n  font-size: 22px;\r\n  color: white;\r\n  display: block;\r\n  width: 120px;\r\n}\r\n\r\n.ball:hover {\r\n  /* animation: border-hover 0.5s ease-in-out; */\r\n  /* border: none; */\r\n  cursor: pointer;\r\n}\r\n\r\n.info {\r\n  width: 200px;\r\n  padding: 20px;\r\n  /* height: 120px; */\r\n  background-color: rgb(60, 60, 60);\r\n  /* border: 3px solid rgb(20, 20, 20); */\r\n  border-radius: 5px;\r\n  align-items: center;\r\n  justify-content: center;\r\n  text-align: center;\r\n  font-size: 22px;\r\n  color: white;\r\n  display: flex;\r\n  flex-direction: column;\r\n  font-family: Verdana, Geneva, Tahoma, sans-serif;\r\n}\r\n\r\n.againButton {\r\n  width: 150px;\r\n  padding: 20px;\r\n  margin: 10px;\r\n  background-color: rgb(80, 80, 80);\r\n  border: 2px solid white;\r\n  border-radius: 5px;\r\n  align-items: center;\r\n  justify-content: center;\r\n  text-align: center;\r\n  font-size: 22px;\r\n  color: white;\r\n  display: flex;\r\n  cursor: pointer;\r\n  font-family: Verdana, Geneva, Tahoma, sans-serif;\r\n}\r\n\r\n.againButton:hover {\r\n  background-color: rgb(120, 120, 120);\r\n}\r\n\r\n.againButton:active {\r\n  background-color: rgb(100, 100, 100);\r\n}\r\n\r\n/* .ball:active {\r\n    border: none;\r\n} */\r\n\r\n@keyframes slide-up {\r\n  0% {\r\n    opacity: 0;\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n  }\r\n}\r\n\r\n@keyframes border-hover {\r\n  0% {\r\n    border: 5px solid white;\r\n  }\r\n  100% {\r\n    border: none;\r\n  }\r\n}\r\n\r\n@keyframes border-unhover {\r\n  0% {\r\n    border: none;\r\n  }\r\n  100% {\r\n    border: 5px solid white;\r\n  }\r\n}\r\n", ""]);
 
 
 /***/ }),
@@ -523,6 +523,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../settings/static-settings */ "./src/settings/static-settings.ts");
 /* harmony import */ var _components_preview__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/preview */ "./src/components/preview.ts");
 /* harmony import */ var _components_score__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/score */ "./src/components/score.ts");
+/* harmony import */ var _components_info__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/info */ "./src/components/info.ts");
+
 
 
 
@@ -550,6 +552,7 @@ var Game = /** @class */ (function () {
         this.drawColors();
         this.preview = new _components_preview__WEBPACK_IMPORTED_MODULE_4__["default"](this.nextColors);
         this.score = new _components_score__WEBPACK_IMPORTED_MODULE_5__["default"]();
+        this.info = new _components_info__WEBPACK_IMPORTED_MODULE_6__["default"]();
         this.drawBalls();
     }
     Game.prototype.drawColors = function () {
@@ -561,105 +564,158 @@ var Game = /** @class */ (function () {
         }
     };
     Game.prototype.drawBalls = function () {
-        for (var i = 0; i < 3; i++) {
-            while (true) {
-                var x = Math.floor(Math.random() * 9);
-                var y = Math.floor(Math.random() * 9);
-                if (_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[y][x] == 0) {
-                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[y][x] = this.nextColors[i][0].toUpperCase();
-                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].balls[y][x] = new _components_ball__WEBPACK_IMPORTED_MODULE_1__["default"](this.nextColors[i], {
-                        x: x,
-                        y: y
-                    });
-                    var endIndex = Object(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_0__["calcTileIndex"])(x + "_" + y);
-                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].tilesList[parseInt(endIndex)].isBall = true;
-                    var tile = document.getElementById(x + "_" + y + "-" + endIndex);
-                    tile.appendChild(_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].balls[y][x].render());
-                    break;
-                    //   this.
+        var _this = this;
+        var counter = 0;
+        for (var i = 0; i < 9; i++)
+            for (var j = 0; j < 9; j++)
+                if (_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[i][j] == 0)
+                    counter++;
+        if (counter > 3) {
+            for (var i = 0; i < 3; i++) {
+                while (true) {
+                    var x = Math.floor(Math.random() * 9);
+                    var y = Math.floor(Math.random() * 9);
+                    if (_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[y][x] == 0) {
+                        _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[y][x] = this.nextColors[i][0].toUpperCase();
+                        _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].balls[y][x] = new _components_ball__WEBPACK_IMPORTED_MODULE_1__["default"](this.nextColors[i], {
+                            x: x,
+                            y: y
+                        });
+                        var endIndex = Object(_settings_game_funcs__WEBPACK_IMPORTED_MODULE_0__["calcTileIndex"])(x + "_" + y);
+                        _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].tilesList[parseInt(endIndex)].isBall = true;
+                        var tile = document.getElementById(x + "_" + y + "-" + endIndex);
+                        tile.appendChild(_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].balls[y][x].render());
+                        break;
+                    }
                 }
+                //   console.log(Settings.balls);
+                //   console.log(Settings.ballArr);
             }
-            //   console.log(Settings.balls);
-            //   console.log(Settings.ballArr);
+            this.drawColors();
+            this.preview.setBallColors(this.nextColors);
         }
-        this.drawColors();
-        this.preview.setBallColors(this.nextColors);
+        else {
+            this.info.render();
+            document.body.children[1].firstElementChild.addEventListener("click", function () {
+                document.body.removeChild(document.body.children[1]);
+                _this.BoardClass.render();
+                _this.board = document.getElementById("container");
+                _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr = [];
+                for (var i = 0; i < 9; i++) {
+                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr.push([]);
+                    for (var j = 0; j < 9; j++)
+                        _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[i].push(0);
+                }
+                for (var i = 0; i < 9; i++) {
+                    _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].balls.push([]);
+                    for (var j = 0; j < 9; j++)
+                        _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].balls[i].push(null);
+                }
+                _this.drawColors();
+                _this.preview.render();
+                _this.score.render();
+            });
+        }
     };
-    Game.prototype.checkBalls = function () { };
-    Game.prototype.checkBallsVert = function () { };
-    Game.prototype.checkBallsHoriz = function () { };
+    Game.prototype.checkBalls = function () {
+        this.checkBallsVH();
+        this.checkBallsCross();
+    };
+    Game.prototype.checkBallsVH = function () {
+        for (var i = 0; i < 9; i++) {
+            for (var j = 0; j < 9; j++)
+                this.compareBalls({ x: i, y: j });
+            this.deleteBallsAndValues();
+            for (var j = 0; j < 9; j++)
+                this.compareBalls({ x: j, y: i });
+            this.deleteBallsAndValues();
+        }
+    };
     Game.prototype.checkBallsCross = function () {
-        var isMatch = [];
-        var currLetter = "";
-        var indexI;
-        var arrCoords;
-        for (var i = -4; i < 5; i++) {
-            i < 0 ? (indexI = -i) : (indexI = i);
-            isMatch = [];
-            for (var j = 0; j < 9 - indexI; j++) {
-                i < 0 ? console.log(j + indexI, j) : console.log(j, j + indexI);
-                i < 0
-                    ? (arrCoords = { x: j, y: j + indexI })
-                    : (arrCoords = { x: j + indexI, y: j });
-                if (isMatch.length < 5 &&
-                    currLetter != _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[arrCoords.y][arrCoords.x]) {
-                    currLetter = "";
-                    isMatch = [];
-                }
-                if (typeof _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[arrCoords.y][arrCoords.x] == "string") {
-                    if (_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[arrCoords.y][arrCoords.x] == currLetter)
-                        isMatch.push(arrCoords.x + "_" + arrCoords.y);
-                    else {
-                        this.removeBalls(isMatch);
-                        currLetter = _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[arrCoords.y][arrCoords.x];
-                        isMatch = [arrCoords.x + "_" + arrCoords.y];
-                    }
-                }
+        // case I:
+        var j, k;
+        for (var i = 4; i < 9; i++) {
+            j = 0;
+            while (i - j >= 0) {
+                console.log(i - j, j);
+                this.compareBalls({ x: i - j, y: j });
+                j++;
             }
         }
-        this.removeBalls(isMatch);
-        isMatch = [];
-        currLetter = "";
-        for (var k = 0; k < 2; k++)
-            for (var i = 8 - k; i >= 4; i--) {
-                k < 1 ? (indexI = i) : (indexI = -(i - 8));
-                for (var j = 0; j <= i; j++) {
-                    // k < 1 ? console.log(j, indexI - j) : console.log(indexI + j, 8 - j);
-                    k < 1
-                        ? (arrCoords = { x: indexI - j, y: j })
-                        : (arrCoords = { x: 8 - j, y: j + indexI });
-                    if (isMatch.length < 5 &&
-                        currLetter != _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[arrCoords.y][arrCoords.x]) {
-                        currLetter = "";
-                        isMatch = [];
-                    }
-                    if (typeof _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[arrCoords.y][arrCoords.x] == "string") {
-                        if (_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[arrCoords.y][arrCoords.x] == currLetter)
-                            isMatch.push(arrCoords.x + "_" + arrCoords.y);
-                        else {
-                            this.removeBalls(isMatch);
-                            currLetter = _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[arrCoords.y][arrCoords.x];
-                            isMatch = [arrCoords.x + "_" + arrCoords.y];
-                        }
-                    }
-                }
+        this.deleteBallsAndValues();
+        // case II:
+        for (var l = 1; l < 5; l++) {
+            k = 0;
+            j = l;
+            while (j < 9) {
+                console.log(8 - k, j);
+                this.compareBalls({ x: 8 - k, y: j });
+                j++;
+                k++;
             }
-        this.removeBalls(isMatch);
+        }
+        this.deleteBallsAndValues();
+        // case III:
+        for (var i = 4; i >= 0; i--) {
+            j = 0;
+            while (i + j <= 8) {
+                console.log(i + j, j);
+                this.compareBalls({ x: i + j, y: j });
+                j++;
+            }
+        }
+        this.deleteBallsAndValues();
+        // case IV:
+        for (var l = 1; l < 5; l++) {
+            k = 0;
+            j = l;
+            while (j < 9) {
+                console.log(0 + k, j);
+                this.compareBalls({ x: 0 + k, y: j });
+                j++;
+                k++;
+            }
+        }
+        this.deleteBallsAndValues();
+        console.log("Score: " + _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].scorePoints);
     };
-    Game.prototype.removeBalls = function (isMatch) {
-        console.log(isMatch.length);
-        if (isMatch.length >= 5) {
-            console.log(isMatch);
-            _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].scorePoints += isMatch.length;
-            for (var k = 0; k < isMatch.length; k++) {
+    Game.prototype.deleteBallsAndValues = function () {
+        this.removeBalls();
+        _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].currLetter = "";
+        _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].isMatch = [];
+    };
+    Game.prototype.compareBalls = function (arrCoords) {
+        if (_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].isMatch.length < 5 &&
+            _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].currLetter != _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[arrCoords.y][arrCoords.x]) {
+            _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].currLetter = "";
+            _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].isMatch = [];
+        }
+        if (typeof _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[arrCoords.y][arrCoords.x] == "string") {
+            if (_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[arrCoords.y][arrCoords.x] == _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].currLetter) {
+                _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].isMatch.push(arrCoords.x + "_" + arrCoords.y);
+            }
+            else {
+                this.removeBalls();
+                _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].currLetter = _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[arrCoords.y][arrCoords.x];
+                _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].isMatch = [arrCoords.x + "_" + arrCoords.y];
+            }
+        }
+    };
+    Game.prototype.removeBalls = function () {
+        console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].isMatch.length);
+        if (_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].isMatch.length >= 5) {
+            console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].isMatch);
+            _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].scorePoints += _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].isMatch.length * 10;
+            for (var k = 0; k < _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].isMatch.length; k++) {
                 // console.log(
                 //   Settings.ballArr[parseInt(isMatch[k][2])][parseInt(isMatch[k][0])]
                 // );
-                _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[parseInt(isMatch[k][2])][parseInt(isMatch[k][0])] = 0;
+                _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr[parseInt(_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].isMatch[k][2])][parseInt(_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].isMatch[k][0])] = 0;
                 document
-                    .getElementById(isMatch[k])
-                    .parentElement.removeChild(document.getElementById(isMatch[k]));
+                    .getElementById(_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].isMatch[k])
+                    .parentElement.removeChild(document.getElementById(_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].isMatch[k]));
             }
+            document.getElementById("score").innerText = "" + _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].scorePoints;
             console.log(_settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr);
         }
     };
@@ -896,7 +952,7 @@ var Board = /** @class */ (function () {
             }
             _this.boardDiv.addEventListener("click", _this.startPath);
             _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].isPathStarted = false;
-            _this._game.checkBallsCross();
+            _this._game.checkBalls();
             _this._game.drawBalls();
         }, 500);
     };
@@ -920,6 +976,31 @@ var Board = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/components/info.ts":
+/*!********************************!*\
+  !*** ./src/components/info.ts ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _settings_static_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../settings/static-settings */ "./src/settings/static-settings.ts");
+
+var Info = /** @class */ (function () {
+    function Info() {
+    }
+    Info.prototype.render = function () {
+        var div = "<div id=\"info\" class=\"info\">You end the game, your score: " + _settings_static_settings__WEBPACK_IMPORTED_MODULE_0__["default"].scorePoints + "<input type=\"submit\" class=\"againButton\" value=\"Play again\"></div>";
+        document.body.children[1].innerHTML = div;
+    };
+    return Info;
+}());
+/* harmony default export */ __webpack_exports__["default"] = (Info);
+
+
+/***/ }),
+
 /***/ "./src/components/preview.ts":
 /*!***********************************!*\
   !*** ./src/components/preview.ts ***!
@@ -935,10 +1016,7 @@ var Preview = /** @class */ (function () {
     //   private _ballColor: Array<string>;
     function Preview(ballColors) {
         this.balls = [];
-        for (var i = 0; i < 3; i++) {
-            this.balls.push(new _ball__WEBPACK_IMPORTED_MODULE_0__["default"](ballColors[i]));
-            //   this._ballColor.push(ballColors[i]);
-        }
+        this.ballColors = ballColors;
         this.render();
     }
     Preview.prototype.setBallColors = function (colors) {
@@ -947,6 +1025,10 @@ var Preview = /** @class */ (function () {
         }
     };
     Preview.prototype.render = function () {
+        for (var i = 0; i < 3; i++) {
+            this.balls.push(new _ball__WEBPACK_IMPORTED_MODULE_0__["default"](this.ballColors[i]));
+            //   this._ballColor.push(ballColors[i]);
+        }
         var prev = document.createElement("div");
         prev.className = "prev";
         prev.innerHTML = "<p class='next'>Następne:</p>";
@@ -1009,6 +1091,8 @@ var Row = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _settings_static_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../settings/static-settings */ "./src/settings/static-settings.ts");
+
 var Score = /** @class */ (function () {
     //   private _ballColor: Array<string>;
     function Score() {
@@ -1018,8 +1102,7 @@ var Score = /** @class */ (function () {
     Score.prototype.render = function () {
         var score = document.createElement("div");
         score.className = "prev";
-        score.innerHTML =
-            "<p class='next'>Wynik:<div id='score' class='next sc'>0</div></p>";
+        score.innerHTML = "<p class='next'>Wynik:<div id='score' class='next sc'>" + _settings_static_settings__WEBPACK_IMPORTED_MODULE_0__["default"].scorePoints + "</div></p>";
         document.body.children[1].appendChild(score);
     };
     return Score;
@@ -1320,6 +1403,8 @@ var Settings = /** @class */ (function () {
     Settings.ballArr = [];
     Settings.balls = [];
     Settings.scorePoints = 0;
+    Settings.currLetter = "";
+    Settings.isMatch = [];
     return Settings;
 }());
 /* harmony default export */ __webpack_exports__["default"] = (Settings);
