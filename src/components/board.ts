@@ -217,7 +217,9 @@ export default class Board {
   }
 
   render() {
+    Settings.indexNum = 0;
     this.boardDiv.id = "container";
+    this.boardDiv.innerHTML = "";
     for (let i = 0; i < Settings.boardSize; i++) {
       let row = new Row(i.toString());
       this.boardDiv.appendChild(row.render());

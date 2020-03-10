@@ -82,9 +82,10 @@ export default class Game {
         "click",
         () => {
           document.body.removeChild(document.body.children[1]);
+          Settings.ballArr = [];
+          Settings.tilesList = [];
           this.BoardClass.render();
           this.board = document.getElementById("container");
-          Settings.ballArr = [];
           for (let i = 0; i < 9; i++) {
             Settings.ballArr.push([]);
             for (let j = 0; j < 9; j++) Settings.ballArr[i].push(0);
@@ -96,6 +97,7 @@ export default class Game {
           this.drawColors();
           this.preview.render();
           this.score.render();
+          this.drawBalls();
         }
       );
     }

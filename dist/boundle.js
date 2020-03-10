@@ -598,9 +598,10 @@ var Game = /** @class */ (function () {
             this.info.render();
             document.body.children[1].firstElementChild.addEventListener("click", function () {
                 document.body.removeChild(document.body.children[1]);
+                _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr = [];
+                _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].tilesList = [];
                 _this.BoardClass.render();
                 _this.board = document.getElementById("container");
-                _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr = [];
                 for (var i = 0; i < 9; i++) {
                     _settings_static_settings__WEBPACK_IMPORTED_MODULE_3__["default"].ballArr.push([]);
                     for (var j = 0; j < 9; j++)
@@ -614,6 +615,7 @@ var Game = /** @class */ (function () {
                 _this.drawColors();
                 _this.preview.render();
                 _this.score.render();
+                _this.drawBalls();
             });
         }
     };
@@ -957,7 +959,9 @@ var Board = /** @class */ (function () {
         }, 500);
     };
     Board.prototype.render = function () {
+        _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].indexNum = 0;
         this.boardDiv.id = "container";
+        this.boardDiv.innerHTML = "";
         for (var i = 0; i < _settings_static_settings__WEBPACK_IMPORTED_MODULE_2__["default"].boardSize; i++) {
             var row = new _row__WEBPACK_IMPORTED_MODULE_0__["default"](i.toString());
             this.boardDiv.appendChild(row.render());
