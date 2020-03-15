@@ -1,5 +1,5 @@
 # Balls game
-An ending project for client apps
+Simple game project for client applications
 
 <h2>Installation</h2>
 After downloading you have to enter main directory and launch file "index.html"
